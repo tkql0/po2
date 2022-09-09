@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-//  korona un jae gget na
 public class Camera_Target : MonoBehaviour
 {
     public CinemachineVirtualCamera Cincamera;
@@ -35,9 +34,6 @@ public class Camera_Target : MonoBehaviour
             Spawn_List.UnitList[ListCount].GetComponent<Player_Move>().isMove = false;
             Cincamera.Follow = Spawn_List.UnitList[i];
             Cincamera.LookAt = Spawn_List.UnitList[i].GetChild(0);
-            //Cincamera.LookAt = Spawn_List.UnitList[i];
-            //FreeLook.Follow = Spawn_List.UnitList[i];
-            //FreeLook.LookAt = Spawn_List.UnitList[i];
             // Tab을 눌렀을때 스폰리스트의 저장된 타겟을 시네머신 카메라에 대입
             MainCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
             // 맵을 보는 시네머신은 끄고
