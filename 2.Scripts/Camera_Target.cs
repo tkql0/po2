@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-//  jaa i jae si jak e yaa
+//  korona un jae gget na
 public class Camera_Target : MonoBehaviour
 {
     public CinemachineVirtualCamera Cincamera;
