@@ -28,58 +28,64 @@ public class Player_Move : MonoBehaviour
 
     bool ShiftDown;
 
+    public Player player;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        player = gameObject.GetComponent<Player>();
     }
 
     public bool isMove;
 
     void PlayerMove()
     {
-        Player player = gameObject.GetComponent<Player>();
-        hAxis = Input.GetAxis("Horizontal");
-        vAxis = Input.GetAxis("Vertical");
-        ShiftDown = Input.GetButton("Walk");
-
-        move = Vector3.right * hAxis + Vector3.forward * vAxis;
-
-        move = Camera.main.transform.TransformDirection(move).normalized;
-
-        if (player.inbow != true && player.inshild != true)
+        if (!player.isDead)
         {
-            transform.position += move * speed * (ShiftDown ? 0.5f : 0.7f) * Time.deltaTime;
-            anim.SetBool("isBowWalk", false);
-            anim.SetBool("isShildWalk", false);
-        }
+            Player player = gameObject.GetComponent<Player>();
+            hAxis = Input.GetAxis("Horizontal");
+            vAxis = Input.GetAxis("Vertical");
+            ShiftDown = Input.GetButton("Walk");
 
-        else
-        {
-            transform.position += move * speed * 0.5f * Time.deltaTime;
+            move = Vector3.right * hAxis + Vector3.forward * vAxis;
 
-            if (player.inbow == true)
+            move = Camera.main.transform.TransformDirection(move).normalized;
+
+            if (player.inbow != true && player.inshild != true)
             {
-                anim.SetBool("isBowWalk", move != Vector3.zero);
+                transform.position += move * speed * (ShiftDown ? 0.5f : 0.7f) * Time.deltaTime;
+                anim.SetBool("isBowWalk", false);
                 anim.SetBool("isShildWalk", false);
             }
 
-            if (player.inshild == true)
+            else
             {
-                anim.SetBool("isBowWalk", false);
-                anim.SetBool("isShildWalk", move != Vector3.zero);
+                transform.position += move * speed * 0.5f * Time.deltaTime;
+
+                if (player.inbow == true)
+                {
+                    anim.SetBool("isBowWalk", move != Vector3.zero);
+                    anim.SetBool("isShildWalk", false);
+                }
+
+                if (player.inshild == true)
+                {
+                    anim.SetBool("isBowWalk", false);
+                    anim.SetBool("isShildWalk", move != Vector3.zero);
+                }
             }
-        }
 
-        //transform.LookAt(transform.position + move);
-        if (move != Vector3.zero)
-        {
-            Vector3 relativePos = (transform.position + move) - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 10);
-        }
+            //transform.LookAt(transform.position + move);
+            if (move != Vector3.zero)
+            {
+                Vector3 relativePos = (transform.position + move) - transform.position;
+                Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 10);
+            }
 
-        anim.SetBool("isRun", move != Vector3.zero);
-        anim.SetBool("isWalk", ShiftDown);
+            anim.SetBool("isRun", move != Vector3.zero);
+            anim.SetBool("isWalk", ShiftDown);
+        }
     }
 }
 // 로컬에서 월드로 변환하는거 필요없어보여도 필요하네

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public bool inshild;
     public bool inbow;
 
-    bool isDead;
+    public bool isDead;
 
     GameObject jobObject;
 
@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
     int equipWeaponIndex = -1;
 
     Animator anim;
+
+    //public Player_Spawn Spawn_List;
+
+    //public Camera_Target camera_Target;
 
     private void Awake()
     {
@@ -183,9 +187,12 @@ public class Player : MonoBehaviour
         if (curHealth <= 0 && !isDead)
         {
             Player_Die();
+            isDead = true;
             StopCoroutine("OnDamage");
+            yield return new WaitForSeconds(3f);
+            gameObject.SetActive(false);
         }
-            yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
         isDamage = false;
     }
 
@@ -207,7 +214,6 @@ public class Player : MonoBehaviour
 
     void Player_Die()
     {
-        
             anim.SetTrigger("doDie");
             isDead = true;
     }

@@ -38,7 +38,7 @@ public class Castle_Spawn : MonoBehaviour
                     shortesDistance = distanceTogameObject;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftAlt) && count == 1)
+            if (Input.GetKeyDown(KeyCode.LeftAlt) && count == 1 && !player.isDead)
             {
                 if (shortesDistance <= range)
                 {
@@ -46,7 +46,7 @@ public class Castle_Spawn : MonoBehaviour
                     Destroy(Castle_range, 1.5f);
                 }
             }
-            if (Input.GetKeyUp(KeyCode.LeftAlt) && count == 1)
+            if (Input.GetKeyUp(KeyCode.LeftAlt) && count == 1 && !player.isDead)
             {
                 if (shortesDistance >= range)
                 {
