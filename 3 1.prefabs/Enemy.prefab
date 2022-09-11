@@ -566,7 +566,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -645,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   targetPosition: {fileID: 4299426476275531603, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
+  saveTarget: {fileID: 0}
   Nav: {fileID: 0}
 --- !u!1 &5817597332558080203
 GameObject:
@@ -754,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6810481333498821693}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:

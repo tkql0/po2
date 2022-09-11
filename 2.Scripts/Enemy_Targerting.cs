@@ -8,6 +8,7 @@ public partial class Enemy_Targerting : MonoBehaviour
     public float range = 5f;
 
     public GameObject targetPosition;
+    public GameObject saveTarget;
 
     public NavMeshAgent Nav;
     Animator anim;
@@ -20,10 +21,16 @@ public partial class Enemy_Targerting : MonoBehaviour
     private void Start()
     {
         Nav = GetComponent<NavMeshAgent>();
+        saveTarget = targetPosition;
     }
     private void Update()
     {
         StartCoroutine(InstantiateEnemy());
+        if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
+        {
+            DownPoint();
+            return;
+        }
     }
 
     IEnumerator InstantiateEnemy()
@@ -36,7 +43,15 @@ public partial class Enemy_Targerting : MonoBehaviour
         }
     }
 
-            private void OnDrawGizmosSelected()
+    void DownPoint()
+    {
+        GameManager.Instance.point.PointHealth -= 1;
+        GameManager.Instance.pointTxt.text = " Health : " + GameManager.Instance.point.PointHealth;
+        Destroy(this.gameObject);
+
+    }
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, range);

@@ -20,6 +20,7 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public Player_Spawn player_spawn;
     public Enemy_Spawn enemy_spawn;
+    public Point point;
 
     public Player_Move player_Move;
 
@@ -27,22 +28,14 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public Text stageTxt;
 
+    public Text pointTxt;
+
     private void Start()
     {
         StageStart();
 
         Time.timeScale = 1;
     }
-
-    //public void DeadCheck()
-    //{
-    //    for (int i = player_spawn.UnitList.Count; i > 0; i--)
-    //    {
-    //        if (player_spawn.UnitList[i].GetComponent<Player>().isDead == true)
-    //            player_spawn.UnitList.Remove(player_spawn.UnitList[i]);
-    //        Debug.Log(i + " : " + player_spawn.UnitList.Count + " : " + player_spawn.UnitList[i].GetComponent<Player>().isDead);
-    //    }
-    //}
 
     public void StageStart()
     {
