@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     // 최대 체력
     public int curHealth;
     // 현재 체력
+    int Check;
+
     public bool isDamage;
 
     //public int job_count;
@@ -36,10 +38,6 @@ public class Player : MonoBehaviour
     int equipWeaponIndex = -1;
 
     Animator anim;
-
-    //public Player_Spawn Spawn_List;
-
-    //public Camera_Target camera_Target;
 
     private void Awake()
     {
@@ -176,11 +174,6 @@ public class Player : MonoBehaviour
         }
     }
 
-        public void ondamage()
-    {
-        //StartCoroutine(OnDamage());
-    }
-
     IEnumerator OnDamage()
     {
         isDamage = true;
@@ -189,8 +182,10 @@ public class Player : MonoBehaviour
             Player_Die();
             isDead = true;
             StopCoroutine("OnDamage");
+            GameManager.Instance.player_spawn.UnitList.Remove(transform);
+            GameManager.Instance.Camera_target.targetDead();
             yield return new WaitForSeconds(3f);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         yield return new WaitForSeconds(1f);
         isDamage = false;

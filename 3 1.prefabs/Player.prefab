@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  maxHealth: 10
+  maxHealth: 2
   curHealth: 0
   isDamage: 0
   job_Weapons:
@@ -714,8 +714,6 @@ MonoBehaviour:
   inbow: 0
   isDead: 0
   equipWeapon: {fileID: 0}
-  Spawn_List: {fileID: 3549181614581396176, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
-  camera_Target: {fileID: 1734901798743131745, guid: 0b35385111419774ea4e5421039f26db, type: 3}
 --- !u!114 &9030485869294100589
 MonoBehaviour:
   m_ObjectHideFlags: 0

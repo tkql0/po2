@@ -52,7 +52,6 @@ public class Castle_Spawn : MonoBehaviour
                 {
                     count = count - 1;
                     gameObject.SetActive(false);
-                    GameManager.Instance.player_spawn.UnitList.RemoveAt(a);
                     Spawn_Unit();
                 }
         }

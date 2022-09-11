@@ -24,8 +24,32 @@ public class Camera_Target : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        KeyDownTab();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            i++;
+            if(i >= Spawn_List.UnitList.Count)
+            {
+                GetComponent<CinemachineVirtualCamera>().enabled = false;
+                // 타겟을 보는 시네머신은 끄고
+                MainCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+                // 맵을 보는 시네머신은 키고
+                i = 0;
+                ListIndex = 0;
+                // 현재 순서를 처음으로 되돌리기
+                Cincamera.Follow = null;
+                Cincamera.LookAt = null;
+                // 순서가 바뀐 뒤 카메라 타겟 설정
+            }
+        }
+    }
+
+    public void KeyDownTab()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
         { // Tab을 누르면 시네머신 카메라가 타겟을 저장된 스폰 리스트 순서대로 시점 변경
+            if (Spawn_List.UnitList.Count == 0)
+                return;
             if (Cincamera.Follow != null)
             { // 타겟이 있을 때만 실행
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().isMove = false;
@@ -46,7 +70,7 @@ public class Camera_Target : MonoBehaviour
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().enabled = true;
                 Spawn_List.UnitList[i].GetComponent<Castle_Spawn>().enabled = true;
             }
-            if(Cincamera.Follow == null)
+            if (Cincamera.Follow == null)
             {
                 Cincamera.Follow = Spawn_List.UnitList[i];
                 Cincamera.LookAt = Spawn_List.UnitList[i].GetChild(0);
@@ -54,6 +78,17 @@ public class Camera_Target : MonoBehaviour
             }
             StartCoroutine(Tab_Change());
         }
+    }
+
+    public void targetDead()
+    {
+        GetComponent<CinemachineVirtualCamera>().enabled = false;
+        // 타겟을 보는 시네머신은 끄고
+        MainCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        // 맵을 보는 시네머신은 키고
+        Cincamera.Follow = null;
+        Cincamera.LookAt = null;
+        // 순서가 바뀐 뒤 카메라 타겟 설정
     }
 
     IEnumerator Tab_Restoration()

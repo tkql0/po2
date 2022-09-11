@@ -12,7 +12,7 @@ public class Wall_Spawn : MonoBehaviour
 
     public Transform spawn_target;
 
-    public float wallrange = 1000f;
+    public float wallrange = 5f;
 
     public GameObject Wall;
     // 己苞 己 荤捞俊 积己

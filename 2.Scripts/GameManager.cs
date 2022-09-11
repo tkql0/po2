@@ -23,6 +23,8 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public Player_Move player_Move;
 
+    public Camera_Target Camera_target;
+
     public Text stageTxt;
 
     private void Start()
@@ -31,6 +33,16 @@ public class GameManager : MonoSingleTon<GameManager>
 
         Time.timeScale = 1;
     }
+
+    //public void DeadCheck()
+    //{
+    //    for (int i = player_spawn.UnitList.Count; i > 0; i--)
+    //    {
+    //        if (player_spawn.UnitList[i].GetComponent<Player>().isDead == true)
+    //            player_spawn.UnitList.Remove(player_spawn.UnitList[i]);
+    //        Debug.Log(i + " : " + player_spawn.UnitList.Count + " : " + player_spawn.UnitList[i].GetComponent<Player>().isDead);
+    //    }
+    //}
 
     public void StageStart()
     {
