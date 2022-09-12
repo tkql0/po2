@@ -644,8 +644,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  targetPosition: {fileID: 4299426476275531603, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
+  targetPosition: {fileID: 4299426476275531615, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
   saveTarget: {fileID: 0}
+  targeting: {fileID: 0}
   Nav: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -653,6 +654,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 4096
+  shortDis: 0
   target_search: []
 --- !u!1 &5817597332558080203
 GameObject:

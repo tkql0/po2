@@ -8,14 +8,18 @@ public partial class Enemy_Targerting : MonoBehaviour
     public float range = 6f;
     // Å¸°ÙÀ» Å½»öÇÒ °Å¸® // ·¹ÀÌ¸¦ ½ò °Å¸®
 
-    public GameObject targetPosition;
-    public GameObject saveTarget;
+    public Transform targetPosition;
+    public Transform saveTarget;
+
+    public Transform targeting;
 
     public NavMeshAgent Nav;
     Animator anim;
 
     public LayerMask targetMask, obstacleMask;
     // Å¸°Ù°ú Àå¾Ö¹°
+
+    public float shortDis;
 
     public List<Transform> target_search = new List<Transform>();
     // Ã£Àº Å¸°ÙÀ» ÀúÀåÇÒ ¸®½ºÆ®
@@ -70,6 +74,26 @@ public partial class Enemy_Targerting : MonoBehaviour
             { // Å¸°ÙÀ» ÇâÇØ Å¸°ÙÀÇ °Å¸®¸¸Å­ ·¹ÀÌ¸¦ ½÷¼­ Àå¾Ö¹°ÀÌ ¾ø´Ù¸é Å¸°ÙÀ» ÀúÀå
                 target_search.Add(target);
             }
+        }
+        if(target_search.Count != 0)
+        {
+            targeting = target_search[0];
+            shortDis = Vector3.Distance(transform.position, target_search[0].transform.position);
+            foreach (Transform found in target_search)
+            {
+                float distance = Vector3.Distance(transform.position, found.transform.position);
+                if (distance < shortDis)
+                {
+                    targeting = found;
+                    shortDis = distance;
+                }
+            }
+            targetPosition = targeting;
+        }
+        else if (target_search.Count == 0)
+        {
+            targetPosition = saveTarget;
+            Nav.stoppingDistance = 0.5f;
         }
     }
 
