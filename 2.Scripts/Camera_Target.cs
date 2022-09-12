@@ -24,25 +24,26 @@ public class Camera_Target : MonoBehaviour
 
     private void Update()
     {
-        KeyDownTab();
         if (Input.GetKeyDown(KeyCode.Q))
         {
             i++;
-            if(i >= Spawn_List.UnitList.Count)
-            {
-                GetComponent<CinemachineVirtualCamera>().enabled = false;
-                // 타겟을 보는 시네머신은 끄고
-                MainCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
-                // 맵을 보는 시네머신은 키고
-                i = 0;
-                ListIndex = 0;
-                // 현재 순서를 처음으로 되돌리기
-                Cincamera.Follow = null;
-                Cincamera.LookAt = null;
-                // 순서가 바뀐 뒤 카메라 타겟 설정
-            }
         }
+        if (i >= Spawn_List.UnitList.Count)
+        {
+            GetComponent<CinemachineVirtualCamera>().enabled = false;
+            // 타겟을 보는 시네머신은 끄고
+            MainCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+            // 맵을 보는 시네머신은 키고
+            i = 0;
+            ListIndex = 0;
+            // 현재 순서를 처음으로 되돌리기
+            Cincamera.Follow = null;
+            Cincamera.LookAt = null;
+            // 순서가 바뀐 뒤 카메라 타겟 설정
+        }
+        KeyDownTab();
     }
+
 
     public void KeyDownTab()
     {
@@ -86,6 +87,7 @@ public class Camera_Target : MonoBehaviour
         // 타겟을 보는 시네머신은 끄고
         MainCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
         // 맵을 보는 시네머신은 키고
+        i = 0;
         Cincamera.Follow = null;
         Cincamera.LookAt = null;
         // 순서가 바뀐 뒤 카메라 타겟 설정
