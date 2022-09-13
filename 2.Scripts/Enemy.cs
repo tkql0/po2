@@ -11,11 +11,11 @@ public class Enemy : MonoBehaviour
     // 현재 체력
     public int damage = 2;
 
-    public bool isDead;
+    public bool isDead = false;
 
     Animator anim;
 
-    public Slider healthSlider;
+    //public Slider healthSlider;
     // 체력 UI
 
     private void Awake()

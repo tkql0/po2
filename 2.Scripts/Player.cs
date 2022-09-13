@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public bool inshild;
     public bool inbow;
 
-    public bool isDead;
+    public bool isDead = false;
 
     GameObject jobObject;
 

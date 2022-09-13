@@ -45,9 +45,9 @@ public partial class Enemy_Targerting : MonoBehaviour
         { // 타겟과의 거리가 3만큼 가까워지면 삭제
             DownPoint();
             return;
-        }
 
-        StartCoroutine(Update_Search());
+        }
+        Search();
     }
 
     IEnumerator InstantiateEnemy()
@@ -58,16 +58,6 @@ public partial class Enemy_Targerting : MonoBehaviour
             Nav.SetDestination(targetPosition.transform.position);
             anim.SetBool("isWalk", true);
         }
-    }
-
-    IEnumerator Update_Search()
-    {
-        while (!enemy.isDead)
-        {
-            Search();
-
-        }
-        yield return new WaitForSeconds(0.2f);
     }
 
     void Search()

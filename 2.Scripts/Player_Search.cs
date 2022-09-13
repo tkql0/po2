@@ -24,17 +24,7 @@ public class Player_Search : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(Update_Search());
-    }
-
-    IEnumerator Update_Search()
-    {
-        while(!player.isDead)
-        {
-            Search();
-
-        }
-        yield return new WaitForSeconds(0.2f);
+        Search();
     }
 
     void Search()
