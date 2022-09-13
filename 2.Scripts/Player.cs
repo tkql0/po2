@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
 
     Animator anim;
 
+    public Slider healthSlider;
+    // Ã¼·Â UI
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -59,6 +62,14 @@ public class Player : MonoBehaviour
 
         Interation();
         Swap();
+        OnEnable();
+    }
+
+    void OnEnable()
+    {
+        healthSlider.gameObject.SetActive(true);
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = curHealth;
     }
 
     void Swap()
@@ -161,7 +172,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
         {
@@ -171,6 +182,10 @@ public class Player : MonoBehaviour
                 curHealth -= enemy.damage;
                 StartCoroutine(OnDamage());
             }
+        }
+        if (other.tag == "Weapon")
+        {
+            jobObject = other.gameObject;
         }
     }
 
@@ -189,14 +204,6 @@ public class Player : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isDamage = false;
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "Weapon")
-        {
-            jobObject = other.gameObject;
-        }
     }
 
     private void OnTriggerExit(Collider other)

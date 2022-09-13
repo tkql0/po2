@@ -17,9 +17,9 @@ public class Enemy_Spawn : MonoBehaviour
     public Vector3 GetRandomPosition()
     {
         float radius = 50f;
-        Vector3 pointPosition = Target.transform.position;
-        float a = pointPosition.x;
-        float b = pointPosition.z;
+        //Vector3 pointPosition = Target.transform.position;
+        float a = Target.transform.position.x;
+        float b = Target.transform.position.z;
 
         float x = Random.Range(-radius + a, radius + a);
         float z_b = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - a, 2));

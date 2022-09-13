@@ -16,6 +16,8 @@ public partial class Enemy_Targerting : MonoBehaviour
     public NavMeshAgent Nav;
     Animator anim;
 
+    Enemy enemy;
+
     public LayerMask targetMask, obstacleMask;
     // 타겟과 장애물
 
@@ -33,6 +35,7 @@ public partial class Enemy_Targerting : MonoBehaviour
     {
         Nav = GetComponent<NavMeshAgent>();
         saveTarget = targetPosition;
+        enemy = GetComponent<Enemy>();
     }
 
     private void Update()
@@ -43,7 +46,8 @@ public partial class Enemy_Targerting : MonoBehaviour
             DownPoint();
             return;
         }
-        Search();
+
+        StartCoroutine(Update_Search());
     }
 
     IEnumerator InstantiateEnemy()
@@ -54,6 +58,16 @@ public partial class Enemy_Targerting : MonoBehaviour
             Nav.SetDestination(targetPosition.transform.position);
             anim.SetBool("isWalk", true);
         }
+    }
+
+    IEnumerator Update_Search()
+    {
+        while (!enemy.isDead)
+        {
+            Search();
+
+        }
+        yield return new WaitForSeconds(0.2f);
     }
 
     void Search()
@@ -75,7 +89,7 @@ public partial class Enemy_Targerting : MonoBehaviour
                 target_search.Add(target);
             }
         }
-        if(target_search.Count != 0)
+        if (target_search.Count != 0)
         {
             targeting = target_search[0];
             shortDis = Vector3.Distance(transform.position, target_search[0].transform.position);

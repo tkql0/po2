@@ -12,16 +12,29 @@ public class Player_Search : MonoBehaviour
     public LayerMask targetMask;
     // 타겟과 장애물
 
+    Player player;
+
     public List<Transform> target_search = new List<Transform>();
     // 찾은 타겟을 저장할 리스트
 
     private void Start()
     {
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        Search();
+        StartCoroutine(Update_Search());
+    }
+
+    IEnumerator Update_Search()
+    {
+        while(!player.isDead)
+        {
+            Search();
+
+        }
+        yield return new WaitForSeconds(0.2f);
     }
 
     void Search()
