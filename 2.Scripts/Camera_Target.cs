@@ -67,6 +67,7 @@ public class Camera_Target : MonoBehaviour
                 Cincamera.Follow = Spawn_List.UnitList[i];
                 Cincamera.LookAt = Spawn_List.UnitList[i].GetChild(0);
                 // 순서가 바뀐 뒤 카메라 타겟 설정
+            
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().isMove = true;
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().enabled = true;
                 Spawn_List.UnitList[i].GetComponent<Castle_Spawn>().enabled = true;

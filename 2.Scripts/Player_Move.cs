@@ -14,7 +14,7 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-    public Transform Cam;
+    //public Transform Cam;
     public Transform Player;
 
     float speed = 10;

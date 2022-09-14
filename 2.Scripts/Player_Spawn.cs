@@ -15,7 +15,7 @@ public class Player_Spawn : MonoBehaviour
 
     public void Unit_Spawn()
     {
-        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -2f), Player.transform.rotation, Player_Group);
+        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -3f), Player.transform.rotation, Player_Group);
         //Unit_Choice unit = Unit_Player.GetComponent<Unit_Choice>();
         Player player = Unit_Player.GetComponent<Player>();
         player.count = count;

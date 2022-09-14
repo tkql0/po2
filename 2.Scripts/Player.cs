@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     public Slider healthSlider;
     // Ã¼·Â UI
 
+    Bow_Shoot bow_shoot;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     {
         curHealth = maxHealth;
         isDamage = false;
+        bow_shoot = GetComponent<Bow_Shoot>();
     }
 
     private void Update()
