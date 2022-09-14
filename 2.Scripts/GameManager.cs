@@ -30,6 +30,8 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public Text pointTxt;
 
+    public List<Transform> Castle_List = new List<Transform>();
+
     private void Start()
     {
         StageStart();

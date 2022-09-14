@@ -60,6 +60,7 @@ public class Castle_Spawn : MonoBehaviour
     public void Spawn_Unit()
     {
         GameObject gameObject = Instantiate(Unit_Castle, transform.position, transform.rotation, GameManager.Instance.Castle_Group);
+        GameManager.Instance.Castle_List.Add(gameObject.transform);
     }
 
     private void OnDrawGizmosSelected()

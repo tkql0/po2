@@ -54,8 +54,6 @@ public class Slider_set : MonoBehaviour
         }
         Click();
     }
-    // 시간 줄어들 때 캐릭터 달리는 이미지 넣고싶다
-    // 시간 0되고 다시 리셋할때 캐릭터가 망치로 두드리면서 시간 다시 차게하고
     IEnumerator Return_Strat()
     {
         yield return new WaitForSeconds(5f);

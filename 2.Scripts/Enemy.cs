@@ -45,5 +45,7 @@ public class Enemy : MonoBehaviour
     {
         anim.SetTrigger("doDie");
         isDead = true;
+        Enemy_Targerting enemy_Targerting = GetComponent<Enemy_Targerting>();
+        enemy_Targerting.Nav.enabled = false;
     }
 }

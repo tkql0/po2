@@ -937,7 +937,6 @@ GameObject:
   - component: {fileID: 3885185521688991111}
   - component: {fileID: -5662593426841231539}
   - component: {fileID: 8946132963479154532}
-  - component: {fileID: 9030485869294100589}
   - component: {fileID: -4896272805441883520}
   - component: {fileID: 728196158024169843}
   - component: {fileID: 5090840443368736521}
@@ -1015,18 +1014,6 @@ MonoBehaviour:
   isDead: 0
   equipWeapon: {fileID: 0}
   healthSlider: {fileID: 4420735626537591624}
---- !u!114 &9030485869294100589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4512926823708036925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eb5ec1701773394487e2a56057c7132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &-4896272805441883520
 NavMeshAgent:
   m_ObjectHideFlags: 0

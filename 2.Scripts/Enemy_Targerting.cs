@@ -33,6 +33,7 @@ public partial class Enemy_Targerting : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(InstantiateEnemy());
         Nav = GetComponent<NavMeshAgent>();
         saveTarget = targetPosition;
         enemy = GetComponent<Enemy>();
@@ -40,24 +41,21 @@ public partial class Enemy_Targerting : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(InstantiateEnemy());
+        Nav.SetDestination(targetPosition.transform.position);
+        anim.SetBool("isWalk", true);
+        Search();
         if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
         { // 타겟과의 거리가 3만큼 가까워지면 삭제
             DownPoint();
             return;
 
         }
-        Search();
     }
 
     IEnumerator InstantiateEnemy()
     {
         yield return new WaitForSeconds(4f);
-        if (Nav.enabled)
-        {
-            Nav.SetDestination(targetPosition.transform.position);
-            anim.SetBool("isWalk", true);
-        }
+        Nav.SetDestination(targetPosition.transform.position);
     }
 
     void Search()
@@ -66,6 +64,7 @@ public partial class Enemy_Targerting : MonoBehaviour
         // 저장된 타겟을 초기화
         Collider[] inTarget = Physics.OverlapSphere(transform.position, range, targetMask);
         // 범위안에 들어온 타겟레이어를 저장
+
         for (int i = 0; i < inTarget.Length; i++)
         {
             Transform target = inTarget[i].transform;
@@ -97,7 +96,16 @@ public partial class Enemy_Targerting : MonoBehaviour
         else if (target_search.Count == 0)
         {
             targetPosition = saveTarget;
-            Nav.stoppingDistance = 0.5f;
+        }
+        WayPoint();
+    }
+
+    void WayPoint()
+    {
+        if (Nav.isPathStale)
+        {
+            targetPosition = GameManager.Instance.Castle_List[GameManager.Instance.Castle_List.Count].transform;
+            return;
         }
     }
 
