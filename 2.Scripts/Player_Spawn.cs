@@ -7,13 +7,15 @@ public class Player_Spawn : MonoBehaviour
     // 캐릭터가 죽으면 UnitList를 Remove 시키기
     [SerializeField]
     private GameObject Player;
-    public int count;
+    public int count = 0;
+
+    public Transform Player_Group;
 
     public List<Transform> UnitList = new List<Transform>();
 
     public void Unit_Spawn()
     {
-        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -2f), Player.transform.rotation, GameManager.Instance.Player_Group);
+        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -2f), Player.transform.rotation, Player_Group);
         //Unit_Choice unit = Unit_Player.GetComponent<Unit_Choice>();
         Player player = Unit_Player.GetComponent<Player>();
         player.count = count;

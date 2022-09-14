@@ -1760,6 +1760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   Follow_Cam: {fileID: 740807481}
+  Enemy_Target: {fileID: 1068684697}
   Player_Group: {fileID: 1531955878}
   Castle_Group: {fileID: 870828566}
   isDefense: 0
@@ -2776,6 +2777,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 4512926823708036925, guid: f5028b4ec2854c240b1ee6eaa5943786, type: 3}
+    - target: {fileID: 3549181614581396176, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
+      propertyPath: Player_Group
+      value: 
+      objectReference: {fileID: 1531955878}
     - target: {fileID: 4299426476275531603, guid: 6a23a56dda789454dbe488d09bdeaba7, type: 3}
       propertyPath: m_Name
       value: Point

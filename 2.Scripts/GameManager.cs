@@ -11,6 +11,8 @@ public class GameManager : MonoSingleTon<GameManager>
     // 게임 매니저에서 시네머신카메라에 할당할 오브젝트를 정하기 위해 공개 설정
     // 할당한 오브젝트에서만 마우스 이동 활성화 시키기
 
+    public Transform Enemy_Target;
+
     public Transform Player_Group;
     // 플레이어가 생성될 시 들어갈 그룹
 

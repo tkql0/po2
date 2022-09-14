@@ -33,17 +33,30 @@ public partial class Enemy_Targerting : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(InstantiateEnemy());
         Nav = GetComponent<NavMeshAgent>();
+        StartCoroutine(InstantiateEnemy());
+        targetPosition = GameManager.Instance.Enemy_Target;
         saveTarget = targetPosition;
         enemy = GetComponent<Enemy>();
+        StartCoroutine(Targeing_tDelay(0.2f));
+    }
+
+    IEnumerator Targeing_tDelay(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            Search();
+        }
     }
 
     private void Update()
     {
-        Nav.SetDestination(targetPosition.transform.position);
+        if (Nav.enabled)
+        {
+            Nav.SetDestination(targetPosition.transform.position);
+        }
         anim.SetBool("isWalk", true);
-        Search();
         if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
         { // 타겟과의 거리가 3만큼 가까워지면 삭제
             DownPoint();
@@ -97,7 +110,7 @@ public partial class Enemy_Targerting : MonoBehaviour
         {
             targetPosition = saveTarget;
         }
-        WayPoint();
+        //WayPoint();
     }
 
     void WayPoint()

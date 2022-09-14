@@ -10,12 +10,8 @@ public class Player : MonoBehaviour
     // 최대 체력
     public int curHealth;
     // 현재 체력
-    int Check;
 
     public bool isDamage;
-
-    //public int job_count;
-    // 생성시 랜덤한 직업을 가질 카운트
 
     public GameObject[] job_Weapons;
     public bool[] hasWeapon;
