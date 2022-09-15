@@ -26,8 +26,6 @@ public partial class Enemy_Targerting : MonoBehaviour
     public List<Transform> target_search = new List<Transform>();
     // 찾은 타겟을 저장할 리스트
 
-    //LineRenderer linerenderer;
-
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -36,41 +34,12 @@ public partial class Enemy_Targerting : MonoBehaviour
     private void Start()
     {
         Nav = GetComponent<NavMeshAgent>();
-        //linerenderer = GetComponent<LineRenderer>();
-        //linerenderer.startWidth = linerenderer.endWidth = 0.1f;
-        //linerenderer.material.color = Color.blue;
-        //linerenderer.enabled = false;
         StartCoroutine(InstantiateEnemy());
         targetPosition = GameManager.Instance.Enemy_Target;
         saveTarget = targetPosition;
         enemy = GetComponent<Enemy>();
         StartCoroutine(Targeing_tDelay(0.2f));
     }
-
-    //public void makePath()
-    //{
-    //    linerenderer.enabled = true;
-    //    StartCoroutine(makePathCoroutine());
-    //}
-
-    //IEnumerator makePathCoroutine()
-    //{
-    //    Nav.SetDestination(targetPosition.transform.position);
-    //    linerenderer.SetPosition(0, this.transform.position);
-
-    //    yield return new WaitForSeconds(0.1f);
-
-    //    drawPath();
-    //}
-
-    //void drawPath()
-    //{
-    //    int length = Nav.path.corners.Length;
-
-    //    linerenderer.positionCount = length;
-    //    for (int i = 1; i < length; i++)
-    //        linerenderer.SetPosition(i, Nav.path.corners[i]);
-    //}
 
     IEnumerator Targeing_tDelay(float delay)
     {

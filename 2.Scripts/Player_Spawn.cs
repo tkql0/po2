@@ -16,11 +16,10 @@ public class Player_Spawn : MonoBehaviour
     public void Unit_Spawn()
     {
         GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -3f), Player.transform.rotation, Player_Group);
-        //Unit_Choice unit = Unit_Player.GetComponent<Unit_Choice>();
         Player player = Unit_Player.GetComponent<Player>();
         player.count = count;
         count++;
-        //player.job_count = Random.Range(0, 3);
+        player.Job_Index = Random.Range(0, 3);
         // 1은 활 2은 방패 0은 무직
 
         UnitList.Add(Unit_Player.transform);

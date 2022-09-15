@@ -10,20 +10,13 @@ public class Castle_Spawn : MonoBehaviour
     public GameObject Castle_Withdrawal;
 
     public Player player;
-    public float range = 1.5f;
+    public float range = 2.5f;
 
     public int count = 1;
-
-    public int a;
 
     public string CastleTag = "Castle";
 
     private RaycastHit hitInfo;
-
-    private void Awake()
-    {
-        a = player.count;
-    }
 
     private void Update()
     {
@@ -59,7 +52,7 @@ public class Castle_Spawn : MonoBehaviour
 
     public void Spawn_Unit()
     {
-        GameObject gameObject = Instantiate(Unit_Castle, transform.position, transform.rotation, GameManager.Instance.Castle_Group);
+        GameObject gameObject = Instantiate(Unit_Castle, transform.position + new Vector3(0, 2f, 0), transform.rotation, GameManager.Instance.Castle_Group);
         GameManager.Instance.Castle_List.Add(gameObject.transform);
     }
 

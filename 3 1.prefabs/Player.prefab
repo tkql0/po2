@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 88533797443540253}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3040690427269507280}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.7}
+  m_AnchoredPosition: {x: 0, y: 0.11}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3855282422249085119
@@ -900,7 +900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4311764011039618224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.928, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1033,6 +1033,7 @@ MonoBehaviour:
   count: 0
   maxHealth: 10
   curHealth: 0
+  Job_Index: 0
   isDamage: 0
   job_Weapons:
   - {fileID: 7688911192886687695}
@@ -1153,9 +1154,8 @@ MonoBehaviour:
   Unit_Castle: {fileID: 6794533570101295553, guid: 2261a28bb91b0864c9b0d08b2951c62e, type: 3}
   Castle_Withdrawal: {fileID: 8006688339267970973, guid: 2f59425a874557d4f9f171729ee04ad9, type: 3}
   player: {fileID: 8946132963479154532}
-  range: 1.5
+  range: 2.5
   count: 1
-  a: 0
   CastleTag: Castle
 --- !u!65 &1400298899927559991
 BoxCollider:

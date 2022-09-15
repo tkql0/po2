@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public int curHealth;
     // 현재 체력
 
+    public int Job_Index;
+
     public bool isDamage;
 
     public GameObject[] job_Weapons;
@@ -47,6 +49,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        switch(Job_Index)
+        {
+            case 0:
+                break;
+            case 1:
+                hasWeapon[1] = true;
+                break;
+            case 2:
+                hasWeapon[2] = true;
+                break;
+        }
         curHealth = maxHealth;
         isDamage = false;
         bow_shoot = GetComponent<Bow_Shoot>();
