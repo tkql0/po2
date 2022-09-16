@@ -9,11 +9,13 @@ public class Bow_Shoot : MonoBehaviour
 
     public GameObject Aiming_Point;
 
-    public CinemachineVirtualCamera Cincamera;
+    public Camera_Target camera_target;
+    public Person_Cam person_cam;
 
     private void Start()
     {
         player = GetComponent<Player>();
+        camera_target = GameManager.Instance.Camera_target;
     }
 
     private void Update()
@@ -23,12 +25,16 @@ public class Bow_Shoot : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
         {
+            camera_target.GetComponent<CinemachineVirtualCamera>().enabled = false;
+            person_cam.GetComponent<CinemachineVirtualCamera>().enabled = true;
             Aiming_Point.SetActive(true);
         }
-        else
+        else if(!Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
         {
+            person_cam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+            camera_target.GetComponent<CinemachineVirtualCamera>().enabled = true;
             Aiming_Point.SetActive(false);
         }
     }

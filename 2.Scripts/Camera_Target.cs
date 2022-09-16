@@ -47,7 +47,7 @@ public class Camera_Target : MonoBehaviour
 
     public void KeyDownTab()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !Input.GetMouseButton(0))
         { // Tab을 누르면 시네머신 카메라가 타겟을 저장된 스폰 리스트 순서대로 시점 변경
             if (Spawn_List.UnitList.Count == 0)
                 return;

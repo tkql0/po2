@@ -188,10 +188,16 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if (!isDamage)
+            if (!isDamage && !inshild)
             {
                 Enemy enemy = other.GetComponent<Enemy>();
                 curHealth -= enemy.damage;
+                StartCoroutine(OnDamage());
+            }
+            else if(!isDamage && inshild)
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                curHealth -= enemy.damage / 3;
                 StartCoroutine(OnDamage());
             }
         }
@@ -207,7 +213,6 @@ public class Player : MonoBehaviour
         if (curHealth <= 0 && !isDead)
         {
             Player_Die();
-            isDead = true;
             //StopCoroutine("OnDamage");
             GameManager.Instance.player_spawn.UnitList.Remove(transform);
             GameManager.Instance.Camera_target.targetDead();
@@ -228,7 +233,7 @@ public class Player : MonoBehaviour
 
     void Player_Die()
     {
-            anim.SetTrigger("doDie");
-            isDead = true;
+        isDead = true;
+        anim.SetTrigger("doDie");
     }
 }
