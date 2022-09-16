@@ -9,13 +9,13 @@ public class Enemy : MonoBehaviour
     // 최대 체력
     public int curHealth;
     // 현재 체력
-    public int damage = 2;
+    public int damage;
 
     public bool isDead = false;
 
     Animator anim;
 
-    //public Slider healthSlider;
+    public Slider healthSlider;
     // 체력 UI
 
     private void Awake()
@@ -28,17 +28,29 @@ public class Enemy : MonoBehaviour
         curHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        OnEnable();
+        StartCoroutine(OnDamage());
+    }
+
     IEnumerator OnDamage()
     {
         if (curHealth <= 0 && !isDead)
         {
             Enemy_Die();
-            isDead = true;
-            StopCoroutine("OnDamage");
+            //StopCoroutine("OnDamage");
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }
         yield return new WaitForSeconds(1f);
+    }
+
+    void OnEnable()
+    {
+        healthSlider.gameObject.SetActive(true);
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = curHealth;
     }
 
     void Enemy_Die()

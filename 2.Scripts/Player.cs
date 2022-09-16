@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
         {
             Player_Die();
             isDead = true;
-            StopCoroutine("OnDamage");
+            //StopCoroutine("OnDamage");
             GameManager.Instance.player_spawn.UnitList.Remove(transform);
             GameManager.Instance.Camera_target.targetDead();
             yield return new WaitForSeconds(3f);

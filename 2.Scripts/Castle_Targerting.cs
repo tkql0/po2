@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Castle_Targerting : MonoBehaviour
 {
-    public float range = 6f;
+    public float range;
     // Å¸°ÙÀ» Å½»öÇÒ °Å¸® // ·¹ÀÌ¸¦ ½ò °Å¸®
 
     public float Cool_Time = 4f;
     public float Cool_Time_Down = 0f;
     // °ø°Ý ÄðÅ¸ÀÓ
+    public int Castle_damage;
+
     public GameObject Danger;
     public Transform target;
+
+    public GameObject castle_Shoot;
 
     public string EnemyTag = "Enemy";
 
@@ -50,6 +54,7 @@ public class Castle_Targerting : MonoBehaviour
         {
             target = nearestEnemy.transform;
             Danger.SetActive(true);
+            StartCoroutine(Shoot());
         }
 
         else
@@ -57,6 +62,15 @@ public class Castle_Targerting : MonoBehaviour
             target = null;
             Danger.SetActive(false);
         }
+    }
+
+    IEnumerator Shoot()
+    {
+        GameObject Attack = Instantiate(castle_Shoot, target.GetChild(0).position, target.rotation);
+        Enemy enemy = target.GetComponent<Enemy>();
+        enemy.curHealth = enemy.curHealth - Castle_damage;
+        Destroy(Attack, 2f);
+        yield return new WaitForSeconds(Cool_Time);
     }
 
     private void OnDrawGizmosSelected()

@@ -52,10 +52,7 @@ public partial class Enemy_Targerting : MonoBehaviour
 
     private void Update()
     {
-        if (Nav.enabled)
-        {
-            Nav.SetDestination(targetPosition.transform.position);
-        }
+        Nav.SetDestination(saveTarget.transform.position);
         //makePath();
         anim.SetBool("isWalk", true);
         if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)

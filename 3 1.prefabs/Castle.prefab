@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 6794533570101295567}
   - component: {fileID: -1986592367111431421}
   - component: {fileID: -1968231726478887969}
+  - component: {fileID: -4375076080540947390}
   m_Layer: 12
   m_Name: Castle
   m_TagString: Castle
@@ -245,6 +246,20 @@ MonoBehaviour:
   range: 6
   Cool_Time: 4
   Cool_Time_Down: 0
+  Castle_damage: 2
   Danger: {fileID: 3645320633740096466}
   target: {fileID: 0}
+  castle_Shoot: {fileID: 9005545038337458795, guid: d980259a81a6c9344aee47c9385fe16c, type: 3}
   EnemyTag: Enemy
+--- !u!114 &-4375076080540947390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794533570101295553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd6dae2d1cd9264393c8476cecb21cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

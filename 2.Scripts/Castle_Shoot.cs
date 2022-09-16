@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_List : MonoBehaviour
+public class Castle_Shoot : MonoBehaviour
 {
     
 }
