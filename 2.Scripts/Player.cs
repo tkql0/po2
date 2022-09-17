@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
             else if(!isDamage && inshild)
             {
                 Enemy enemy = other.GetComponent<Enemy>();
-                curHealth -= enemy.damage / 3;
+                curHealth -= enemy.damage / 2;
                 StartCoroutine(OnDamage());
             }
         }

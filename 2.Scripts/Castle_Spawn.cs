@@ -20,6 +20,9 @@ public class Castle_Spawn : MonoBehaviour
 
     private void Update()
     {
+        // 네비메쉬문제는 성을 설치할수있는 범위를 성을 쌓을때마다 주변성 카운트 자신 카운트 합으로 늘리고
+        // 본체 성에서 2~3 정보 떨어져야 설치할수있게
+        // 이러면 경로 막혀서 무한루프 하지는 않겠지
             GameObject[] castles = GameObject.FindGameObjectsWithTag(CastleTag);
             float shortesDistance = Mathf.Infinity;
 

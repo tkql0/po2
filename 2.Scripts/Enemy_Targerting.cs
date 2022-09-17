@@ -62,10 +62,6 @@ public partial class Enemy_Targerting : MonoBehaviour
         {
             if ( targetPosition == null)
                 targetPosition = saveTarget;
-            if(PointTarget(targetPosition.position, out Point))
-            {
-                targetPosition.position = Point;
-            }
             Nav.SetDestination(targetPosition.transform.position);
             anim.SetBool("isWalk", true);
             if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
@@ -74,49 +70,6 @@ public partial class Enemy_Targerting : MonoBehaviour
                 return;
 
             }
-        }
-    }
-
-    bool PointTarget(Vector3 point, out Vector3 result)
-    {
-        for (int i = 0; i < 30; i++)
-        {
-            Vector3 point_target = point;
-            NavMeshHit hit;
-            if (!NavMesh.SamplePosition(point_target, out hit, 1.0f, NavMesh.AllAreas))
-            {
-                Castle_Search();
-                result = target.position;
-                return true;
-            }
-        }
-        result = targetPosition.position;
-        return false;
-    }
-
-    void Castle_Search()
-    {
-        GameObject[] castles = GameObject.FindGameObjectsWithTag(CastleTag);
-        float shortesDistance = Mathf.Infinity;
-        GameObject nearestCastle = null;
-
-        foreach (GameObject Castle in castles)
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, Castle.transform.position);
-            if (distanceToPlayer < shortesDistance)
-            {
-                shortesDistance = distanceToPlayer;
-                nearestCastle = Castle;
-            }
-        }
-        if (nearestCastle != null)
-        {
-            target = nearestCastle.transform;
-        }
-
-        else
-        {
-            target = targetPosition;
         }
     }
 
