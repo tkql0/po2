@@ -24,8 +24,6 @@ public class GameManager : MonoSingleTon<GameManager>
     public Enemy_Spawn enemy_spawn;
     public Point point;
 
-    public Player_Move player_Move;
-
     public Camera_Target Camera_target;
 
     public Text stageTxt;

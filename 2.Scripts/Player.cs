@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
 
     Bow_Shoot bow_shoot;
 
+    Player_Move player_move;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        player_move = GetComponent<Player_Move>();
         switch(Job_Index)
         {
             case 0:
@@ -73,7 +76,10 @@ public class Player : MonoBehaviour
         sDown3 = Input.GetButtonDown("Swap3");
 
         Interation();
-        Swap();
+        if(player_move.enabled == true)
+        {
+            Swap();
+        }
         OnEnable();
     }
 

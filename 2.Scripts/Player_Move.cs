@@ -14,7 +14,6 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-    //public Transform Cam;
     public Transform Player;
 
     float speed = 10;
@@ -37,6 +36,7 @@ public class Player_Move : MonoBehaviour
     }
 
     public bool isMove;
+
 
     void PlayerMove()
     {

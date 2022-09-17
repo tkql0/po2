@@ -26,6 +26,12 @@ public partial class Enemy_Targerting : MonoBehaviour
     public List<Transform> target_search = new List<Transform>();
     // 찾은 타겟을 저장할 리스트
 
+    public string CastleTag = "Castle";
+
+    public Transform target;
+
+    Vector3 Point;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -54,15 +60,63 @@ public partial class Enemy_Targerting : MonoBehaviour
     {
         if (Nav.enabled)
         {
+            if ( targetPosition == null)
+                targetPosition = saveTarget;
+            if(PointTarget(targetPosition.position, out Point))
+            {
+                targetPosition.position = Point;
+            }
             Nav.SetDestination(targetPosition.transform.position);
-        }
-        //makePath();
-        anim.SetBool("isWalk", true);
-        if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
-        { // 타겟과의 거리가 3만큼 가까워지면 삭제
-            DownPoint();
-            return;
+            anim.SetBool("isWalk", true);
+            if (Vector3.Distance(transform.position, saveTarget.transform.position) <= 3f)
+            { // 타겟과의 거리가 3만큼 가까워지면 삭제
+                DownPoint();
+                return;
 
+            }
+        }
+    }
+
+    bool PointTarget(Vector3 point, out Vector3 result)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 point_target = point;
+            NavMeshHit hit;
+            if (!NavMesh.SamplePosition(point_target, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                Castle_Search();
+                result = target.position;
+                return true;
+            }
+        }
+        result = targetPosition.position;
+        return false;
+    }
+
+    void Castle_Search()
+    {
+        GameObject[] castles = GameObject.FindGameObjectsWithTag(CastleTag);
+        float shortesDistance = Mathf.Infinity;
+        GameObject nearestCastle = null;
+
+        foreach (GameObject Castle in castles)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, Castle.transform.position);
+            if (distanceToPlayer < shortesDistance)
+            {
+                shortesDistance = distanceToPlayer;
+                nearestCastle = Castle;
+            }
+        }
+        if (nearestCastle != null)
+        {
+            target = nearestCastle.transform;
+        }
+
+        else
+        {
+            target = targetPosition;
         }
     }
 
