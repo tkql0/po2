@@ -12,7 +12,7 @@ public class Wall_Spawn : MonoBehaviour
 
     public Transform spawn_target;
 
-    public float wallrange = 5f;
+    public float wallrange = 3f;
 
     public GameObject Wall;
     // 성과 성 사이에 생성
@@ -38,7 +38,6 @@ public class Wall_Spawn : MonoBehaviour
                     wall.transform.localScale += new Vector3(0, 0, distanceTogameObject / 2);
                     // 성 밑으로 생성되게 해서 성이 파괴될시 같이 파괴
                     // 애니메이션을 넣는다면 플레이어가 걸어가는 모습을 생성된 방향으로 하기
-                    // 
                 }
             }
         }

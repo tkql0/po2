@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth;
+    public float maxHealth;
     // 최대 체력
-    public int curHealth;
+    public float curHealth;
     // 현재 체력
-    public int damage;
+    public float damage;
 
     public bool isDead = false;
 
