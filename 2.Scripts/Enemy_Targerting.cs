@@ -118,16 +118,6 @@ public partial class Enemy_Targerting : MonoBehaviour
         {
             targetPosition = saveTarget;
         }
-        //WayPoint();
-    }
-
-    void WayPoint()
-    {
-        if (Nav.isPathStale)
-        {
-            targetPosition = GameManager.Instance.Castle_List[GameManager.Instance.Castle_List.Count].transform;
-            return;
-        }
     }
 
     void DownPoint()

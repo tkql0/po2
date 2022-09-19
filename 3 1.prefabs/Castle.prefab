@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: -1986592367111431421}
   - component: {fileID: -1968231726478887969}
   - component: {fileID: -4375076080540947390}
+  - component: {fileID: -1832432719544283519}
   m_Layer: 12
   m_Name: Castle
   m_TagString: Castle
@@ -263,3 +264,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd6dae2d1cd9264393c8476cecb21cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1832432719544283519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794533570101295553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52eb0a75baf321c42bf6bebee2ccf9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  castleMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  CastleList: []
+  PlayerTag: Player
+  PlayerList: []
