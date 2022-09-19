@@ -21,7 +21,7 @@ public class Castle : MonoBehaviour
     public void Spawn_Limit_Range()
     {
         CastleList.Clear();
-        Collider[] colliders = Physics.OverlapSphere(transform.position, range + 1, castleMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range + 2, castleMask);
         for (int i = 0; i < colliders.Length; i++)
         {
             Transform target = colliders[i].transform;
@@ -31,8 +31,6 @@ public class Castle : MonoBehaviour
         {
             range = range + CastleList.Count;
         }
-        else
-            range = 2;
     }
 
     void Spawn_Limit_Target()
