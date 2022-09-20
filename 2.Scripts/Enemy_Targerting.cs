@@ -16,8 +16,6 @@ public partial class Enemy_Targerting : MonoBehaviour
     public NavMeshAgent Nav;
     Animator anim;
 
-    Enemy enemy;
-
     public LayerMask targetMask, obstacleMask;
     // 타겟과 장애물
 
@@ -30,8 +28,6 @@ public partial class Enemy_Targerting : MonoBehaviour
 
     public Transform target;
 
-    Vector3 Point;
-
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -43,7 +39,6 @@ public partial class Enemy_Targerting : MonoBehaviour
         StartCoroutine(InstantiateEnemy());
         targetPosition = GameManager.Instance.Enemy_Target;
         saveTarget = targetPosition;
-        enemy = GetComponent<Enemy>();
         StartCoroutine(Targeing_tDelay(0.2f));
     }
 

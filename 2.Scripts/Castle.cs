@@ -6,6 +6,8 @@ public class Castle : MonoBehaviour
 {
     public float range = 2;
 
+    public GameObject Range;
+
     public LayerMask castleMask;
     public List<Transform> CastleList = new List<Transform>();
 
@@ -14,7 +16,6 @@ public class Castle : MonoBehaviour
 
     private void Update()
     {
-        //Spawn_Limit_Range();
         Spawn_Limit_Target();
     }
 
@@ -38,14 +39,12 @@ public class Castle : MonoBehaviour
         PlayerList.Clear();
         GameObject[] players = GameObject.FindGameObjectsWithTag(PlayerTag);
         float shortesDistance = Mathf.Infinity;
-        GameObject nearestPlayer = null;
         foreach (GameObject Player in players)
         {
             float distanceTogameObject = Vector3.Distance(transform.position, Player.transform.position);
             if (distanceTogameObject < shortesDistance)
             {
                 shortesDistance = distanceTogameObject;
-                nearestPlayer = Player;
                 PlayerList.Add(Player);
             }
         }
@@ -56,10 +55,13 @@ public class Castle : MonoBehaviour
                 if (shortesDistance <= range)
                 {
                     PlayerList[i].GetComponent<Castle_Spawn>().Spawn_Limit = true;
+                    Range.transform.localScale = new Vector3(range, range, range);
+                    Range.SetActive(true);
                 }
                 else
                 {
                     PlayerList[i].GetComponent<Castle_Spawn>().Spawn_Limit = false;
+                    Range.SetActive(false);
                     PlayerList.RemoveAt(i);
                 }
             }

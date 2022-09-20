@@ -8,11 +8,9 @@ public class Point : MonoBehaviour
     // 최대 체력
     public int curHealth;
     // 현재 체력
+    public LayerMask targetMask;
 
     float range = 8f;
-    
-    public string PlayerTag = "Player";
-    public List<GameObject> PlayerList = new List<GameObject>();
 
     private void Start()
     {
@@ -26,33 +24,7 @@ public class Point : MonoBehaviour
 
     void Spawn_Limit_Target()
     {
-        PlayerList.Clear();
-        GameObject[] players = GameObject.FindGameObjectsWithTag(PlayerTag);
-        float shortesDistance = Mathf.Infinity;
-        foreach (GameObject Player in players)
-        {
-            float distanceTogameObject = Vector3.Distance(transform.position, Player.transform.position);
-            if (distanceTogameObject < shortesDistance)
-            {
-                shortesDistance = distanceTogameObject;
-                PlayerList.Add(Player);
-            }
-        }
-        if (PlayerList.Count >= 1)
-        {
-            for (int i = 0; i < PlayerList.Count; i++)
-            {
-                if (shortesDistance <= range)
-                {
-                    PlayerList[i].GetComponent<Castle_Spawn>().Spawn_Limit = true;
-                }
-                else
-                {
-                    PlayerList[i].GetComponent<Castle_Spawn>().Spawn_Limit = false;
-                    PlayerList.RemoveAt(i);
-                }
-            }
-        }
+        
     }
 
     private void OnDrawGizmosSelected()

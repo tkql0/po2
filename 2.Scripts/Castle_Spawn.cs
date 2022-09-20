@@ -9,16 +9,12 @@ public class Castle_Spawn : MonoBehaviour
     // 생성될 오브젝트
     public GameObject Castle_Withdrawal;
 
-    GameObject nearestCastle;
-
     public Player player;
     public float range;
 
     public int count = 1;
 
     public string CastleTag = "Castle";
-
-    private RaycastHit hitInfo;
 
     public bool Spawn_Limit = false;
 
@@ -34,14 +30,12 @@ public class Castle_Spawn : MonoBehaviour
         // 이러면 경로 막혀서 무한루프 하지는 않겠지
         GameObject[] castles = GameObject.FindGameObjectsWithTag(CastleTag);
         float shortesDistance = Mathf.Infinity;
-        nearestCastle = null;
         foreach (GameObject Castle in castles)
         {
             float distanceTogameObject = Vector3.Distance(transform.position, Castle.transform.position);
             if (distanceTogameObject < shortesDistance)
             {
                 shortesDistance = distanceTogameObject;
-                nearestCastle = Castle;
             }
         }
 
