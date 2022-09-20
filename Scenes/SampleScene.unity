@@ -885,8 +885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointHealth: 20
   curHealth: 0
-  PlayerTag: Player
-  PlayerList: []
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &1070325729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734901798627563454, guid: 0b35385111419774ea4e5421039f26db, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 3.006666
+      value: 3.966667
       objectReference: {fileID: 0}
     - target: {fileID: 1734901798627563454, guid: 0b35385111419774ea4e5421039f26db, type: 3}
       propertyPath: m_FollowOffset.z
