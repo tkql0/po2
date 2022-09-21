@@ -56,6 +56,7 @@ public class Camera_Target : MonoBehaviour
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().isMove = false;
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().enabled = false;
                 Spawn_List.UnitList[i].GetComponent<Castle_Spawn>().enabled = false;
+                Spawn_List.UnitList[i].GetComponent<Bow_Shoot>().enabled = false;
                 // 현재 순서가 바뀌기 전에 스크립트 끄기
                 i++;
                 // 모든 순서가 끝난 후 현재 순서 +1
@@ -71,6 +72,7 @@ public class Camera_Target : MonoBehaviour
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().isMove = true;
                 Spawn_List.UnitList[i].GetComponent<Player_Move>().enabled = true;
                 Spawn_List.UnitList[i].GetComponent<Castle_Spawn>().enabled = true;
+                Spawn_List.UnitList[i].GetComponent<Bow_Shoot>().enabled = true;
             }
             if (Cincamera.Follow == null)
             {
@@ -99,6 +101,7 @@ public class Camera_Target : MonoBehaviour
         Spawn_List.UnitList[ListIndex].GetComponent<Player_Move>().isMove = false;
         Spawn_List.UnitList[ListIndex].GetComponent<Player_Move>().enabled = false;
         Spawn_List.UnitList[ListIndex].GetComponent<Castle_Spawn>().enabled = false;
+        Spawn_List.UnitList[ListIndex].GetComponent<Bow_Shoot>().enabled = false;
         // 리스트 카운트 순서에 있는 타겟의 움직임 스크립트를 끄기
         GetComponent<CinemachineVirtualCamera>().enabled = false;
         // 타겟을 보는 시네머신은 끄고
@@ -124,6 +127,7 @@ public class Camera_Target : MonoBehaviour
         Spawn_List.UnitList[i].GetComponent<Player_Move>().isMove = true;
         Spawn_List.UnitList[i].GetComponent<Player_Move>().enabled = true;
         Spawn_List.UnitList[i].GetComponent<Castle_Spawn>().enabled = true;
+        Spawn_List.UnitList[i].GetComponent<Bow_Shoot>().enabled = true;
         // 현재 순서의 타겟 움직임 스크립트 키기
     }
 }
