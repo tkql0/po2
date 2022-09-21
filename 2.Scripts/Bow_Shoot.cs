@@ -42,8 +42,11 @@ public class Bow_Shoot : MonoBehaviour
         }
         else if(!Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
         {
-            //camera_target.GetComponent<CinemachineVirtualCamera>().enabled = true;
             Aiming_Point.SetActive(false);
+            for (int i = 0; i < Line.positionCount; i++)
+            {
+                Line.SetPosition(i, Vector3.zero);
+            }
         }
     }
 
