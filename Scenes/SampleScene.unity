@@ -888,6 +888,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8192
+  PlayerTag: Player
+  PlayerList: []
 --- !u!1 &1070325729
 GameObject:
   m_ObjectHideFlags: 0

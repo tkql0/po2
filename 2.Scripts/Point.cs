@@ -12,6 +12,9 @@ public class Point : MonoBehaviour
 
     float range = 8f;
 
+    public string PlayerTag = "Player";
+    public List<GameObject> PlayerList = new List<GameObject>();
+
     private void Start()
     {
         curHealth = PointHealth;
@@ -24,7 +27,24 @@ public class Point : MonoBehaviour
 
     void Spawn_Limit_Target()
     {
-        
+        GameObject[] players = GameObject.FindGameObjectsWithTag(PlayerTag);
+        foreach (GameObject Player in players)
+        {
+            Vector3 dir = Player.transform.position - transform.position;
+            if (dir != Vector3.zero && players.Length > 0)
+            {
+                float distanceTogameObject = Vector3.Distance(transform.position, Player.transform.position);
+                // 반복중인 오브젝트와의 거리를 계산해 distanceTogameObject에 대입
+                if (distanceTogameObject <= range)
+                {
+                    Player.GetComponent<Castle_Spawn>().Spawn_Limit = true;
+                }
+                else
+                {
+                    Player.GetComponent<Castle_Spawn>().Spawn_Limit = false;
+                }
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
