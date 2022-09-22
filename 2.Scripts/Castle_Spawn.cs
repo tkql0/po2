@@ -10,7 +10,6 @@ public class Castle_Spawn : MonoBehaviour
     public GameObject Castle_Withdrawal;
 
     public Player player;
-    public float range;
 
     public int count = 1;
 

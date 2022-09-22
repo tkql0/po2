@@ -30,7 +30,7 @@ public class Castle : MonoBehaviour
         }
         if (CastleList.Count >= 1)
         {
-            range = range + CastleList.Count;
+            range = range + CastleList.Count + 1;
         }
     }
 
@@ -55,7 +55,7 @@ public class Castle : MonoBehaviour
                 if (shortesDistance <= range)
                 {
                     PlayerList[i].GetComponent<Castle_Spawn>().Spawn_Limit = true;
-                    Range.transform.localScale = new Vector3(range, range, range);
+                    Range.transform.localScale = new Vector3(range + 2, range + 2, range + 2);
                     Range.SetActive(true);
                 }
                 else

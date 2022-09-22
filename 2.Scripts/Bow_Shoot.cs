@@ -32,6 +32,7 @@ public class Bow_Shoot : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
         {
+            //Aiming_target.GetComponent<Player_Attack>().enabled = false;
             float MouseX = Input.GetAxis("Mouse X");
             transform.Rotate(Vector3.up * rotSpeed * MouseX);
             // 마우스가 좌우로 움직이면 움직인 방향으로 회전
@@ -42,11 +43,13 @@ public class Bow_Shoot : MonoBehaviour
         }
         else if(!Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
         {
+            //Aiming_target.GetComponent<Player_Attack>().enabled = true;
             Aiming_Point.SetActive(false);
             for (int i = 0; i < Line.positionCount; i++)
             {
                 Line.SetPosition(i, Vector3.zero);
             }
+            Aiming_target.localPosition = new Vector3(0, 1.3f, 3);
         }
     }
 
