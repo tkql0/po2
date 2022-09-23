@@ -32,13 +32,6 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public List<Transform> Castle_List = new List<Transform>();
 
-    private void Start()
-    {
-        StageStart();
-
-        Time.timeScale = 1;
-    }
-
     public void StageStart()
     {
         isDefense = true;

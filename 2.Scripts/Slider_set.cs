@@ -52,7 +52,6 @@ public class Slider_set : MonoBehaviour
                     StartCoroutine(Return_Strat());
             }
         }
-        Click();
     }
     IEnumerator Return_Strat()
     {
