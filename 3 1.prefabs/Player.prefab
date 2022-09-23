@@ -1190,6 +1190,7 @@ MonoBehaviour:
   Aiming_Point: {fileID: 8592816496325690745}
   camera_target: {fileID: 0}
   Aiming_target: {fileID: 0}
+  Shoot_obj: {fileID: 9005545038337458795, guid: f25c156936d737a4c9d10bb028525f92, type: 3}
 --- !u!120 &4115439609276564458
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2855,6 +2856,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2825047591931200264}
     m_Modifications:
+    - target: {fileID: -8632704771420721649, guid: 31e36184833a1784aab8bd938956adca, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1602935140420168945, guid: 31e36184833a1784aab8bd938956adca, type: 3}
       propertyPath: m_RootOrder
       value: 0

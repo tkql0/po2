@@ -10,6 +10,8 @@ public class Bow_Shoot : MonoBehaviour
     public Camera_Target camera_target;
     public Transform Aiming_target;
 
+    public GameObject Shoot_obj;
+
     float rotSpeed = 10.0f;
 
     LineRenderer Line;
@@ -25,15 +27,14 @@ public class Bow_Shoot : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.point.PointHealth >= 0)
+        if(GameManager.Instance.point.PointHealth >= 0 && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
             Shoot();
     }
 
     void Shoot()
     {
-        if (Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
+        if (Input.GetMouseButton(0))
         {
-            //Aiming_target.GetComponent<Player_Attack>().enabled = false;
             float MouseX = Input.GetAxis("Mouse X");
             transform.Rotate(Vector3.up * rotSpeed * MouseX);
             // 마우스가 좌우로 움직이면 움직인 방향으로 회전
@@ -42,16 +43,22 @@ public class Bow_Shoot : MonoBehaviour
             Aiming_target.transform.Translate(Vector3.forward * MouseY);
             line_renderer();
         }
-        else if(!Input.GetMouseButton(0) && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
+        else if(Input.GetMouseButtonUp(0))
         {
-            //Aiming_target.GetComponent<Player_Attack>().enabled = true;
             Aiming_Point.SetActive(false);
+            Attack();
             for (int i = 0; i < Line.positionCount; i++)
             {
                 Line.SetPosition(i, Vector3.zero);
             }
             Aiming_target.localPosition = new Vector3(0, 1.3f, 3);
         }
+    }
+
+    void Attack()
+    {
+        GameObject Attack = Instantiate(Shoot_obj, transform.position + new Vector3 (endPos.x * 2 , 1, endPos.z * 2), Quaternion.identity);
+        Destroy(Attack, 2f);
     }
 
     void line_renderer()
