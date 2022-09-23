@@ -1142,7 +1142,6 @@ MonoBehaviour:
   Unit_Castle: {fileID: 6794533570101295553, guid: 2261a28bb91b0864c9b0d08b2951c62e, type: 3}
   Castle_Withdrawal: {fileID: 8006688339267970973, guid: 2f59425a874557d4f9f171729ee04ad9, type: 3}
   player: {fileID: 8946132963479154532}
-  range: 2
   count: 1
   CastleTag: Castle
   Spawn_Limit: 0
@@ -1570,9 +1569,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5168449439953689287}
-  - component: {fileID: 6421773944658720749}
   - component: {fileID: 4892616805700836031}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cam_Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1595,20 +1593,6 @@ Transform:
   m_Father: {fileID: 3885185521688991111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6421773944658720749
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5981995917017468222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4892616805700836031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1781,8 +1765,7 @@ GameObject:
   - component: {fileID: 5484532634284697453}
   - component: {fileID: 7230777557875084732}
   - component: {fileID: 4647441598553745455}
-  - component: {fileID: 2260747275897510097}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Aiming_Point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,19 +1837,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2260747275897510097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6605615977557718450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6914267041738428643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,8 +1848,7 @@ GameObject:
   - component: {fileID: 6628716375760828041}
   - component: {fileID: 2506466448761735366}
   - component: {fileID: 4276970320746171780}
-  - component: {fileID: 5644556586945493435}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Aiming_Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1951,19 +1920,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5644556586945493435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6914267041738428643}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6925803170103540196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,8 +2138,7 @@ GameObject:
   - component: {fileID: 416398553894528645}
   - component: {fileID: 6088597876024012917}
   - component: {fileID: 5990236936079402670}
-  - component: {fileID: 6620521088705858443}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Aiming_Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2255,19 +2210,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6620521088705858443
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7673565590475670869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8197436184804951359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,7 +2340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000165211024068204}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Aiming_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

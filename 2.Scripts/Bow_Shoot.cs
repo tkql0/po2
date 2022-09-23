@@ -25,7 +25,8 @@ public class Bow_Shoot : MonoBehaviour
 
     private void Update()
     {
-        Shoot();
+        if(GameManager.Instance.point.PointHealth >= 0)
+            Shoot();
     }
 
     void Shoot()
