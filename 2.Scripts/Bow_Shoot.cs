@@ -12,7 +12,7 @@ public class Bow_Shoot : MonoBehaviour
 
     public GameObject Shoot_obj;
 
-    float rotSpeed = 10.0f;
+    float rotSpeed = 5.0f;
 
     LineRenderer Line;
 

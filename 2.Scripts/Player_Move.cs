@@ -16,7 +16,7 @@ public class Player_Move : MonoBehaviour
 
     public Transform Player;
 
-    float speed = 10;
+    float speed = 8;
 
     float hAxis;
     float vAxis;
