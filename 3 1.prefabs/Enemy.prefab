@@ -931,10 +931,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbd17824cfaf8346916efa6f48b9e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
+  curHealth: 0
+  damage: 2
+  isDead: 0
+  healthSlider: {fileID: 0}
   range: 10
-  targetPosition: {fileID: 0}
-  saveTarget: {fileID: 0}
-  targeting: {fileID: 0}
   Nav: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -942,8 +944,6 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 4096
-  shortDis: 0
-  target_search: []
 --- !u!1 &5285641862024163530
 GameObject:
   m_ObjectHideFlags: 0

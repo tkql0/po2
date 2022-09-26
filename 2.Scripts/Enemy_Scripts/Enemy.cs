@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float maxHealth;
-    // 최대 체력
+    [SerializeField]
+    float maxHealth;
     public float curHealth;
-    // 현재 체력
+
     public float damage;
 
     public bool isDead = false;
@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
         if (curHealth <= 0 && !isDead)
         {
             Enemy_Die();
-            //StopCoroutine("OnDamage");
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }

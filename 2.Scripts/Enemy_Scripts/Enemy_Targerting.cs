@@ -5,41 +5,42 @@ using UnityEngine.AI;
 
 public partial class Enemy_Targerting : MonoBehaviour
 {
-    public float range = 6f;
+    [SerializeField]
+    float range;
     // 타겟을 탐색할 거리 // 레이를 쏠 거리
-
-    public Transform targetPosition;
-    public Transform saveTarget;
-
-    public Transform targeting;
-
     public NavMeshAgent Nav;
+
+    Transform targetPosition;
+    Transform saveTarget;
+    Transform targeting;
+
     Animator anim;
 
     public LayerMask targetMask, obstacleMask;
     // 타겟과 장애물
+    float shortDis;
 
-    public float shortDis;
-
-    public List<Transform> target_search = new List<Transform>();
+    List<Transform> target_search = new List<Transform>();
     // 찾은 타겟을 저장할 리스트
 
-    public string CastleTag = "Castle";
-
-    public Transform target;
-
-    private void Awake()
+    void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        Nav = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
+    void Start()
     {
-        Nav = GetComponent<NavMeshAgent>();
         StartCoroutine(InstantiateEnemy());
         targetPosition = GameManager.Instance.Enemy_Target;
         saveTarget = targetPosition;
         StartCoroutine(Targeing_tDelay(0.2f));
+    }
+
+    IEnumerator InstantiateEnemy()
+    { // Enemy 생성 애니메이션이 끝난 후 네비메쉬 목표설정
+        yield return new WaitForSeconds(5f);
+        Nav.SetDestination(targetPosition.transform.position);
     }
 
     IEnumerator Targeing_tDelay(float delay)
@@ -51,7 +52,7 @@ public partial class Enemy_Targerting : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (Nav.enabled)
         {
@@ -63,15 +64,8 @@ public partial class Enemy_Targerting : MonoBehaviour
             { // 타겟과의 거리가 3만큼 가까워지면 삭제
                 DownPoint();
                 return;
-
             }
         }
-    }
-
-    IEnumerator InstantiateEnemy()
-    {
-        yield return new WaitForSeconds(4f);
-        Nav.SetDestination(targetPosition.transform.position);
     }
 
     void Search()
@@ -90,9 +84,8 @@ public partial class Enemy_Targerting : MonoBehaviour
             float dstToTarget = Vector3.Distance(transform.position, target.transform.position);
             // 타겟과 자신과의 거리를 저장
             if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
-            { // 타겟을 향해 타겟의 거리만큼 레이를 쏴서 장애물이 없다면 타겟을 저장
+             // 타겟을 향해 타겟의 거리만큼 레이를 쏴서 장애물이 없다면 타겟을 저장
                 target_search.Add(target);
-            }
         }
         if (target_search.Count != 0)
         {
@@ -119,13 +112,6 @@ public partial class Enemy_Targerting : MonoBehaviour
     {
         GameManager.Instance.point.PointHealth -= 1;
         GameManager.Instance.pointTxt.text = " Health : " + GameManager.Instance.point.PointHealth;
-        Destroy(this.gameObject);
-
-    }
-
-    private void OnDrawGizmosSelected()
-    { // 그냥 시각적 효과 거리는 5만큼 지워도됨
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Destroy(gameObject);
     }
 }
