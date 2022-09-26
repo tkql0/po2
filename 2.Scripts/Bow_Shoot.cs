@@ -18,11 +18,14 @@ public class Bow_Shoot : MonoBehaviour
 
     Vector3 startPos, endPos;
 
+    Player player;
+
     private void Start()
     {
         camera_target = GameManager.Instance.Camera_target;
         Aiming_target = this.transform.GetChild(0);
         Line = GetComponent<LineRenderer>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -41,12 +44,16 @@ public class Bow_Shoot : MonoBehaviour
             Aiming_Point.SetActive(true);
             float MouseY = Input.GetAxis("Mouse Y");
             Aiming_target.transform.Translate(Vector3.forward * MouseY);
-            line_renderer();
+            if (player.inbow == true)
+            {
+                line_renderer();
+            }
         }
         else if(Input.GetMouseButtonUp(0))
         {
             Aiming_Point.SetActive(false);
-            Attack();
+            if (player.inbow == true)
+                Attack();
             for (int i = 0; i < Line.positionCount; i++)
             {
                 Line.SetPosition(i, Vector3.zero);
