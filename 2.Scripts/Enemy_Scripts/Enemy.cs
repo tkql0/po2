@@ -13,14 +13,13 @@ public class Enemy : MonoBehaviour
 
     public bool isDead = false;
 
-    Animator anim;
+    Animator Enemy_anim;
 
     public Slider healthSlider;
-    // Ã¼·Â UI
 
     private void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
+        Enemy_anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -31,14 +30,17 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         OnEnable();
-        StartCoroutine(OnDamage());
+        StartCoroutine(Enemy_Die());
     }
 
-    IEnumerator OnDamage()
+    IEnumerator Enemy_Die()
     {
         if (curHealth <= 0 && !isDead)
         {
-            Enemy_Die();
+            isDead = true;
+            Enemy_anim.SetTrigger("doDie");
+            Enemy_Targerting enemy_Targerting = GetComponent<Enemy_Targerting>();
+            enemy_Targerting.Enemy_Nav.isStopped = true;
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }
@@ -50,13 +52,5 @@ public class Enemy : MonoBehaviour
         healthSlider.gameObject.SetActive(true);
         healthSlider.maxValue = maxHealth;
         healthSlider.value = curHealth;
-    }
-
-    void Enemy_Die()
-    {
-        isDead = true;
-        anim.SetTrigger("doDie");
-        Enemy_Targerting enemy_Targerting = GetComponent<Enemy_Targerting>();
-        enemy_Targerting.Nav.isStopped = true;
     }
 }

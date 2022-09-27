@@ -1027,8 +1027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46783ec82af508045a64a6bb34a03caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_E: {fileID: 5283026105513324716, guid: 260a44785c754ed478e96ccb8a3f02fc, type: 3}
-  Target: {fileID: 98689532}
+  Enemy_obj: {fileID: 5283026105513324716, guid: 260a44785c754ed478e96ccb8a3f02fc, type: 3}
+  Enemy_Spawn_Target: {fileID: 98689532}
   Enemy_Group: {fileID: 1070325730}
 --- !u!114 &1068684703
 MonoBehaviour:
@@ -1345,6 +1345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
+  point: {fileID: 1068684703}
+  stageTxt: {fileID: 969932485}
+  pointTxt: {fileID: 955636707}
   Follow_Cam: {fileID: 740807481}
   Enemy_Target: {fileID: 1068684697}
   Player_Group: {fileID: 1531955878}
@@ -1352,10 +1355,7 @@ MonoBehaviour:
   isDefense: 0
   player_spawn: {fileID: 1068684698}
   enemy_spawn: {fileID: 1068684699}
-  point: {fileID: 1068684703}
   Camera_target: {fileID: 740807482}
-  stageTxt: {fileID: 969932485}
-  pointTxt: {fileID: 955636707}
   Castle_List: []
 --- !u!1001 &1454964367
 PrefabInstance:
@@ -1658,10 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d747288fc5ad6364e90b6d41aa14bbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sTimer: {fileID: 1695638476}
   manager: {fileID: 1363968156}
-  reTime: 15
-  click: 0
 --- !u!114 &1695638476
 MonoBehaviour:
   m_ObjectHideFlags: 0

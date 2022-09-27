@@ -11,9 +11,7 @@ public class Start_UI : MonoBehaviour
     public void OnClick()
     {
         if (Panel == true)
-        {
             Panel.SetActive(false);
-        }
         manager.StageStart();
         Time.timeScale = 1;
     }

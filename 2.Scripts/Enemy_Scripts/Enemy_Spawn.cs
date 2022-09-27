@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class Enemy_Spawn : MonoBehaviour
 {
-    public GameObject Enemy_E;
-    public GameObject Target;
+    public GameObject Enemy_obj;
+    public GameObject Enemy_Spawn_Target;
 
     public Transform Enemy_Group;
 
     public void Spawn_Enemy()
     {
-        GameObject instantEnemy = Instantiate(Enemy_E, GetRandomPosition(), Quaternion.identity, Enemy_Group);
+        Instantiate(Enemy_obj, GetRandomPosition(), Quaternion.identity, Enemy_Group);
     }
 
     public Vector3 GetRandomPosition()
     {
         float radius = 50f;
-        //Vector3 pointPosition = Target.transform.position;
-        float a = Target.transform.position.x;
-        float b = Target.transform.position.z;
+        float a = Enemy_Spawn_Target.transform.position.x;
+        float b = Enemy_Spawn_Target.transform.position.z;
 
         float x = Random.Range(-radius + a, radius + a);
         float z_b = Mathf.Sqrt(Mathf.Pow(radius, 2) - Mathf.Pow(x - a, 2));

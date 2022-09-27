@@ -827,7 +827,6 @@ GameObject:
   - component: {fileID: 4763336073999608342}
   - component: {fileID: 8935107007255640228}
   - component: {fileID: 2539157849143004229}
-  - component: {fileID: -1997086147830597653}
   - component: {fileID: 3919421891762502927}
   - component: {fileID: 724289753472734757}
   m_Layer: 10
@@ -894,18 +893,6 @@ MonoBehaviour:
   damage: 2
   isDead: 0
   healthSlider: {fileID: 916782795113181017}
---- !u!114 &-1997086147830597653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5283026105513324716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b35b4236eb07041b8ea2105b74c987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &3919421891762502927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -931,13 +918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbd17824cfaf8346916efa6f48b9e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  curHealth: 0
-  damage: 2
-  isDead: 0
-  healthSlider: {fileID: 0}
-  range: 10
-  Nav: {fileID: 0}
+  Enemy_Search_Range: 10
+  Enemy_Nav: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 8192

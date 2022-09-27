@@ -194,15 +194,14 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if (!isDamage && !inshild)
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (!isDamage && !inshild && !enemy.isDead)
             {
-                Enemy enemy = other.GetComponent<Enemy>();
                 curHealth -= enemy.damage;
                 StartCoroutine(OnDamage());
             }
-            else if(!isDamage && inshild)
+            else if(!isDamage && inshild && !enemy.isDead)
             {
-                Enemy enemy = other.GetComponent<Enemy>();
                 curHealth -= enemy.damage / 2;
                 StartCoroutine(OnDamage());
             }

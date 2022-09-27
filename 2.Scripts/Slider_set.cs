@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class Slider_set : MonoBehaviour
 {
-    public Slider sTimer;
+    Slider sTimer;
+    float reTime = 15;
 
     public GameManager manager;
 
-    public float reTime;
-
-    public bool click;
+    bool click;
 
     private void Awake()
     {
@@ -23,24 +22,6 @@ public class Slider_set : MonoBehaviour
         click = false;
     }
 
-    public void Click()
-    {
-        if (!click)
-            TimerOn();
-        else
-            TimerOff();
-    }
-
-    public void TimerOn()
-    {
-        click = true;
-    }
-
-    public void TimerOff()
-    {
-        click = false;
-    }
-
     private void Update()
     {
         if(click)
@@ -48,14 +29,25 @@ public class Slider_set : MonoBehaviour
             if (sTimer.value > 0.0f)
             {
                 sTimer.value -= Time.deltaTime;
+
                 if (sTimer.value <= 0.0f)
                     StartCoroutine(Return_Strat());
             }
         }
     }
+
+    public void Click()
+    {
+        if (!click)
+            click = true;
+
+        else
+            click = false;
+    }
+
     IEnumerator Return_Strat()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         sTimer.value = reTime;
         manager.StageEnd();
     }
