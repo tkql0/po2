@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointHealth: 20
-  targetMask:
+  playerMask:
     serializedVersion: 2
     m_Bits: 8192
   panel: {fileID: 2103717733}

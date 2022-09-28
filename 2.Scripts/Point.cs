@@ -7,14 +7,14 @@ public class Point : MonoBehaviour
 {
     public int PointHealth = 20;
     // 최대 체력
-    public LayerMask targetMask;
+    public LayerMask playerMask;
 
     public GameObject panel;
 
     float range = 8f;
 
     public string PlayerTag = "Player";
-    public List<GameObject> PlayerList = new List<GameObject>();
+    public List<Transform> PlayerList = new List<Transform>();
 
     private void Update()
     {
@@ -28,25 +28,36 @@ public class Point : MonoBehaviour
 
     void Spawn_Limit_Target()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag(PlayerTag);
-        foreach (GameObject Player in players)
+        PlayerList.Clear();
+        Collider[] players = Physics.OverlapSphere(transform.position, range, playerMask);
+
+        for (int i = 0; i < players.Length; i++)
+        { // 범위안에 있는 플레이어를 받아와서 저장
+            Transform target = players[i].transform;
+            // i번째 타겟을 대입
+            PlayerList.Add(target);
+        }
+
+        if (PlayerList.Count != 0)
         {
-            Vector3 dir = Player.transform.position - transform.position;
-            if (dir != Vector3.zero && players.Length > 0)
+            for (int i = 0; i < PlayerList.Count; i++)
             {
-                float distanceTogameObject = Vector3.Distance(transform.position, Player.transform.position);
+                float dstToTarget = Vector3.Distance(transform.position, players[i].transform.position);
                 // 반복중인 오브젝트와의 거리를 계산해 distanceTogameObject에 대입
-                if (distanceTogameObject <= range)
+
+                if (dstToTarget <= range)
                 {
-                    Player.GetComponent<Castle_Spawn>().Spawn_Limit = true;
+                    players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = true;
                 }
-                else
+
+                else if (dstToTarget >= range)
                 {
-                    Player.GetComponent<Castle_Spawn>().Spawn_Limit = false;
+                    players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = false;
                 }
             }
         }
     }
+
     public void ReStrat()
     {
         SceneManager.LoadScene(0);

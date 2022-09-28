@@ -20,14 +20,11 @@ public class Camera_Target : MonoBehaviour
     private void Start()
     {
         Cincamera = GetComponent<CinemachineVirtualCamera>();
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            i++;
-        }
         if (i >= Spawn_List.UnitList.Count)
         {
             GetComponent<CinemachineVirtualCamera>().enabled = false;

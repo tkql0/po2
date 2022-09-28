@@ -4,78 +4,64 @@ using UnityEngine;
 
 public class Castle_Targerting : MonoBehaviour
 {
-    public float range;
+    [SerializeField]
+    float Castle_Seatch_Range;
     // 타겟을 탐색할 거리 // 레이를 쏠 거리
-
-    public float Cool_Time = 4f;
-    public float Cool_Time_Down = 0f;
+    [SerializeField]
+    float Castle_Attack_Cool_Time;
     // 공격 쿨타임
-    public int Castle_damage;
+    [SerializeField]
+    float Castle_damage;
 
     public GameObject Danger;
-    public Transform target;
+    public GameObject Castle_Shoot;
 
-    public GameObject castle_Shoot;
+    Transform Target_Position;
 
-    public string EnemyTag = "Enemy";
+    public LayerMask targetMask;
+    List<Transform> Castle_Seatch_List = new List<Transform>();
+    // 찾은 타겟을 저장할 리스트
+
 
     private void Start()
     {
-        InvokeRepeating("Search", 0f, 0.5f);
+        Invoke("Castle_Search", Castle_Attack_Cool_Time);
     }
 
-    private void Update()
+    void Castle_Search()
     {
+        Castle_Seatch_List.Clear();
+        // 저장된 타겟을 초기화
+        Collider[] inTarget = Physics.OverlapSphere(transform.position, Castle_Seatch_Range, targetMask);
+        // 범위안에 들어온 타겟레이어를 저장
 
-    }
-
-    void Search()
-    {
-        GameObject[] enemys = GameObject.FindGameObjectsWithTag(EnemyTag);
-        // 생성된 오브젝트 중 Enemy 태그가 붙은 오브젝트 저장
-        float shortesDistance = Mathf.Infinity;
-        // shortesDistance 무한으로 초기화
-        GameObject nearestEnemy = null;
-        // 몬스터 없음
-
-        foreach (GameObject Enemy in enemys)
-        { // 생성되어있는 몬스터만큼 반복
-            float distanceToPlayer = Vector3.Distance(transform.position, Enemy.transform.position);
-            // 자신과 몬스터와의 거리를 저장
-            if (distanceToPlayer < shortesDistance)
-            { // distanceToPlayer가 shortesDistance보다 작다면
-                shortesDistance = distanceToPlayer;
-                // shortesDistance에 distanceToPlayer 대입
-                nearestEnemy = Enemy;
-                // 몬스터 있음
-            }
-        }
-        if (nearestEnemy != null && shortesDistance <= range)
+        for (int i = 0; i < inTarget.Length; i++)
         {
-            target = nearestEnemy.transform;
+            Transform target = inTarget[i].transform;
+            // i번째 타겟을 대입
+            Castle_Seatch_List.Add(target);
+        }
+
+        if (Castle_Seatch_List.Count != 0)
+        {
+            Target_Position = Castle_Seatch_List[0].transform;
             Danger.SetActive(true);
             StartCoroutine(Shoot());
         }
 
         else
         {
-            target = null;
+            Target_Position = null;
             Danger.SetActive(false);
         }
     }
 
     IEnumerator Shoot()
     {
-        GameObject Attack = Instantiate(castle_Shoot, target.GetChild(0).position, target.rotation);
-        Enemy enemy = target.GetComponent<Enemy>();
+        GameObject Attack = Instantiate(Castle_Shoot, Target_Position.GetChild(0).position, Target_Position.rotation);
+        Enemy enemy = Target_Position.GetComponent<Enemy>();
         enemy.curHealth = enemy.curHealth - Castle_damage;
         Destroy(Attack, 2f);
-        yield return new WaitForSeconds(Cool_Time);
-    }
-
-    private void OnDrawGizmosSelected()
-    { // 그냥 시각적 효과 거리는 5만큼 지워도됨
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
+        yield return new WaitForSeconds(Castle_Attack_Cool_Time);
     }
 }

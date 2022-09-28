@@ -11,11 +11,10 @@ public class Castle_Spawn : MonoBehaviour
 
     public Player player;
 
-    public int count = 1;
-
     public string CastleTag = "Castle";
 
-    public bool Spawn_Limit = false;
+    public bool Point_Spawn_Limit = false;
+    public bool Castle_Spawn_Limit = false;
 
     private void Update()
     {
@@ -38,22 +37,21 @@ public class Castle_Spawn : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && count == 1 && !player.isDead)
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && !player.isDead)
         {
-            if (Spawn_Limit == true)
+            if (Point_Spawn_Limit == true || Castle_Spawn_Limit == true)
             {
                 GameObject Castle_range = Instantiate(Castle_Withdrawal, transform.position, transform.rotation, this.transform);
                 Destroy(Castle_range, 1.5f);
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftAlt) && count == 1 && !player.isDead)
+        if (Input.GetKeyUp(KeyCode.LeftAlt) && !player.isDead)
         {
-            if (Spawn_Limit == false)
+            if (Point_Spawn_Limit == false && Castle_Spawn_Limit == false)
             {
-                count = count - 1;
-                gameObject.SetActive(false);
                 Spawn_Unit();
+                Destroy(gameObject);
             }
         }
     }
@@ -64,5 +62,6 @@ public class Castle_Spawn : MonoBehaviour
         Castle castle = gameObject.GetComponent<Castle>();
         castle.Spawn_Limit_Range();
         GameManager.Instance.Castle_List.Add(gameObject.transform);
+        GameManager.Instance.player_spawn.UnitList.Remove(transform);
     }
 }
