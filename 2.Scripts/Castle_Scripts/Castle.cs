@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-    public float range = 2;
+    [SerializeField]
+    float range;
 
     public GameObject Range;
 
     public LayerMask playerMask, castleMask;
-    public List<Transform> CastleList = new List<Transform>();
-    public List<Transform> PlayerList = new List<Transform>();
+    List<Transform> CastleList = new List<Transform>();
+    List<Transform> PlayerList = new List<Transform>();
 
     private void Update()
     {
@@ -18,7 +19,7 @@ public class Castle : MonoBehaviour
     }
 
     public void Spawn_Limit_Range()
-    {
+    { // 범위 안에 있는 Castle의 수만큼 생성 제한범위 증가
         CastleList.Clear();
         Collider[] colliders = Physics.OverlapSphere(transform.position, range + 2, castleMask);
         for (int i = 0; i < colliders.Length; i++)
@@ -33,7 +34,7 @@ public class Castle : MonoBehaviour
     }
 
     void Spawn_Limit_Target()
-    {
+    { // 범위 내에서 Player의 Castle 생성 제한
         PlayerList.Clear();
         Collider[] players = Physics.OverlapSphere(transform.position, range, playerMask);
 
@@ -65,11 +66,5 @@ public class Castle : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    { // 그냥 시각적 효과 거리는 5만큼 지워도됨
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

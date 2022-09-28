@@ -25,7 +25,7 @@ public class Castle_Targerting : MonoBehaviour
 
     private void Start()
     {
-        Invoke("Castle_Search", Castle_Attack_Cool_Time);
+        InvokeRepeating("Castle_Search", 0f, Castle_Attack_Cool_Time);
     }
 
     void Castle_Search()
@@ -46,7 +46,7 @@ public class Castle_Targerting : MonoBehaviour
         {
             Target_Position = Castle_Seatch_List[0].transform;
             Danger.SetActive(true);
-            StartCoroutine(Shoot());
+            Shoot();
         }
 
         else
@@ -56,12 +56,11 @@ public class Castle_Targerting : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
+    void Shoot()
     {
         GameObject Attack = Instantiate(Castle_Shoot, Target_Position.GetChild(0).position, Target_Position.rotation);
         Enemy enemy = Target_Position.GetComponent<Enemy>();
         enemy.curHealth = enemy.curHealth - Castle_damage;
         Destroy(Attack, 2f);
-        yield return new WaitForSeconds(Castle_Attack_Cool_Time);
     }
 }

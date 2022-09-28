@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Castle_Seatch_Range: 3
-  Castle_Attack_Cool_Time: 1
+  Castle_Attack_Cool_Time: 0.5
   Castle_damage: 2
   Danger: {fileID: 3645320633740096466}
   Castle_Shoot: {fileID: 9005545038337458795, guid: d980259a81a6c9344aee47c9385fe16c, type: 3}
