@@ -11,10 +11,9 @@ public class Point : MonoBehaviour
 
     public GameObject panel;
 
-    float range = 8f;
+    float Point_Limit_Range = 8f;
 
-    public string PlayerTag = "Player";
-    public List<Transform> PlayerList = new List<Transform>();
+    List<Transform> PlayerList = new List<Transform>();
 
     private void Update()
     {
@@ -29,7 +28,7 @@ public class Point : MonoBehaviour
     void Spawn_Limit_Target()
     {
         PlayerList.Clear();
-        Collider[] players = Physics.OverlapSphere(transform.position, range, playerMask);
+        Collider[] players = Physics.OverlapSphere(transform.position, Point_Limit_Range, playerMask);
 
         for (int i = 0; i < players.Length; i++)
         { // 범위안에 있는 플레이어를 받아와서 저장
@@ -45,15 +44,12 @@ public class Point : MonoBehaviour
                 float dstToTarget = Vector3.Distance(transform.position, players[i].transform.position);
                 // 반복중인 오브젝트와의 거리를 계산해 distanceTogameObject에 대입
 
-                if (dstToTarget <= range)
-                {
+                if (dstToTarget <= Point_Limit_Range)
+                    // Player와 Point의 거리가 제한범위보다 가깝다면
                     players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = true;
-                }
 
-                else if (dstToTarget >= range)
-                {
+                else if (dstToTarget >= Point_Limit_Range)
                     players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = false;
-                }
             }
         }
     }
@@ -61,12 +57,5 @@ public class Point : MonoBehaviour
     public void ReStrat()
     {
         SceneManager.LoadScene(0);
-    }
-
-
-    private void OnDrawGizmosSelected()
-    { // 그냥 시각적 효과 거리는 5만큼 지워도됨
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

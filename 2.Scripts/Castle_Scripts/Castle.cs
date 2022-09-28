@@ -5,7 +5,7 @@ using UnityEngine;
 public class Castle : MonoBehaviour
 {
     [SerializeField]
-    float range;
+    float Castle_Limit_Range;
 
     public GameObject Range;
 
@@ -21,22 +21,22 @@ public class Castle : MonoBehaviour
     public void Spawn_Limit_Range()
     { // 범위 안에 있는 Castle의 수만큼 생성 제한범위 증가
         CastleList.Clear();
-        Collider[] colliders = Physics.OverlapSphere(transform.position, range + 2, castleMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Castle_Limit_Range + 2, castleMask);
+
         for (int i = 0; i < colliders.Length; i++)
         {
             Transform target = colliders[i].transform;
             CastleList.Add(target);
         }
+
         if (CastleList.Count >= 1)
-        {
-            range = range + CastleList.Count + 1;
-        }
+            Castle_Limit_Range = Castle_Limit_Range + CastleList.Count + 1;
     }
 
     void Spawn_Limit_Target()
     { // 범위 내에서 Player의 Castle 생성 제한
         PlayerList.Clear();
-        Collider[] players = Physics.OverlapSphere(transform.position, range, playerMask);
+        Collider[] players = Physics.OverlapSphere(transform.position, Castle_Limit_Range, playerMask);
 
         for (int i = 0; i < players.Length; i++)
         { // 범위안에 있는 플레이어를 받아와서 저장
@@ -51,14 +51,14 @@ public class Castle : MonoBehaviour
             {
                 float dstToTarget = Vector3.Distance(transform.position, PlayerList[i].transform.position);
 
-                if (dstToTarget <= range)
-                {
+                if (dstToTarget <= Castle_Limit_Range)
+                { // Player와 Castle의 거리가 제한범위보다 가깝다면
                     PlayerList[i].GetComponent<Castle_Spawn>().Castle_Spawn_Limit = true;
-                    Range.transform.localScale = new Vector3(range + 2, range + 2, range + 2);
+                    Range.transform.localScale = new Vector3(Castle_Limit_Range + 2, Castle_Limit_Range + 2, Castle_Limit_Range + 2);
                     Range.SetActive(true);
                 }
 
-                else if(dstToTarget >= range)
+                else if(dstToTarget >= Castle_Limit_Range)
                 {
                     PlayerList[i].GetComponent<Castle_Spawn>().Castle_Spawn_Limit = false;
                     Range.SetActive(false);
