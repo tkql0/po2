@@ -50,6 +50,6 @@ public class Castle_Spawn : MonoBehaviour
         Castle castle = gameObject.GetComponent<Castle>();
         castle.Spawn_Limit_Range();
         GameManager.Instance.Castle_List.Add(gameObject.transform);
-        GameManager.Instance.player_spawn.UnitList.Remove(transform);
+        GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
     }
 }

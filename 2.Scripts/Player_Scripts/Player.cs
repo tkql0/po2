@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int count = 0;
     public float maxHealth;
     // 최대 체력
     public float curHealth;
@@ -44,15 +43,13 @@ public class Player : MonoBehaviour
 
     Player_Move player_move;
 
-    private void Awake()
-    {
-        anim = GetComponentInChildren<Animator>();
-    }
-
     private void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         player_move = GetComponent<Player_Move>();
-        switch(Job_Index)
+        curHealth = maxHealth;
+        isDamage = false;
+        switch (Job_Index)
         {
             case 0:
                 break;
@@ -63,8 +60,6 @@ public class Player : MonoBehaviour
                 hasWeapon[2] = true;
                 break;
         }
-        curHealth = maxHealth;
-        isDamage = false;
         bow_shoot = GetComponent<Bow_Shoot>();
     }
 
@@ -218,9 +213,8 @@ public class Player : MonoBehaviour
         if (curHealth <= 0 && !isDead)
         {
             Player_Die();
-            //StopCoroutine("OnDamage");
-            GameManager.Instance.player_spawn.UnitList.Remove(transform);
-            GameManager.Instance.Camera_target.targetDead();
+            GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
+            GameManager.Instance.Camera_target.Player_Dead();
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }

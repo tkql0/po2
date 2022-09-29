@@ -1047,8 +1047,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   panel: {fileID: 2103717733}
-  PlayerTag: Player
-  PlayerList: []
 --- !u!1 &1070325729
 GameObject:
   m_ObjectHideFlags: 0
