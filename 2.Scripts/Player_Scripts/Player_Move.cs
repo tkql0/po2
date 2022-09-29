@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEngine.AI;
 
 public class Player_Move : MonoBehaviour
 {
@@ -32,7 +30,7 @@ public class Player_Move : MonoBehaviour
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
-        player = gameObject.GetComponent<Player>();
+        player = GetComponent<Player>();
     }
 
     public bool isMove;

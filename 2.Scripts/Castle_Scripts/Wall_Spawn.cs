@@ -12,9 +12,6 @@ public class Wall_Spawn : MonoBehaviour
     float wallrange = 3f;
 
     public GameObject Wall;
-    // 성과 성 사이에 생성
-    // 다른 성과의 각도와 거리를 계산하고 거리의 1/2만큼의 거리에 생성
-    // 범위를 2정도 주고 그 안에 있다면 있는 수만큼 반복 // start함수로 해야겠다 // 생성과 동시에 주변오브젝트를 탐색하고 벽 생성
 
     private void Start()
     {

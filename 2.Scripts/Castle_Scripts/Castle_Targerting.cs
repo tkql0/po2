@@ -6,10 +6,8 @@ public class Castle_Targerting : MonoBehaviour
 {
     [SerializeField]
     float Castle_Seatch_Range;
-    // 타겟을 탐색할 거리 // 레이를 쏠 거리
     [SerializeField]
     float Castle_Attack_Cool_Time;
-    // 공격 쿨타임
     [SerializeField]
     float Castle_damage;
 
@@ -21,7 +19,6 @@ public class Castle_Targerting : MonoBehaviour
     public LayerMask targetMask;
     List<Transform> Castle_Seatch_List = new List<Transform>();
     // 찾은 타겟을 저장할 리스트
-
 
     private void Start()
     {

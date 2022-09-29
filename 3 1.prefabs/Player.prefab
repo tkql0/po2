@@ -1108,11 +1108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unit_Castle: {fileID: 6794533570101295553, guid: 2261a28bb91b0864c9b0d08b2951c62e, type: 3}
-  Castle_Withdrawal: {fileID: 8006688339267970973, guid: 2f59425a874557d4f9f171729ee04ad9, type: 3}
-  player: {fileID: 8946132963479154532}
-  count: 1
-  CastleTag: Castle
-  Spawn_Limit: 0
+  Castle_Limit: {fileID: 8554059586744129301, guid: 4479ba9946f6e45489157d02def25dc7, type: 3}
+  Point_Spawn_Limit: 0
+  Castle_Spawn_Limit: 0
 --- !u!65 &1400298899927559991
 BoxCollider:
   m_ObjectHideFlags: 0
