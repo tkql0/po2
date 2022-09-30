@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Player_Attack : MonoBehaviour
 {
-    float damage = 5;
-    float Attack_count = 1;
+    [SerializeField]
+    float Player_Damage;
+    float Player_Attack_Count = 1;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && Attack_count == 1)
+        if (other.gameObject.layer == 10 && Player_Attack_Count == 1)
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.curHealth -= damage;
-            Attack_count = 0;
+            enemy.curHealth -= Player_Damage;
+            Player_Attack_Count = 0;
         }
     }
 }

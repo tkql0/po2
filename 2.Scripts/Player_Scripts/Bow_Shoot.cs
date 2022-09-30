@@ -55,7 +55,7 @@ public class Bow_Shoot : MonoBehaviour
             Aiming_Point.SetActive(false);
 
             if (player.inbow == true)
-                Attack();
+                Shoot_Obj_Spawn();
 
             for (int i = 0; i < Line.positionCount; i++)
             {
@@ -66,7 +66,7 @@ public class Bow_Shoot : MonoBehaviour
         }
     }
 
-    void Attack()
+    void Shoot_Obj_Spawn()
     {
         GameObject Attack = Instantiate(Shoot_obj, transform.position + new Vector3 (endPos.x * 2 , 1, endPos.z * 2), Quaternion.identity);
         Destroy(Attack, 2f);

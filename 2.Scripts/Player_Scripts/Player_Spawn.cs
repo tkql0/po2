@@ -5,15 +5,13 @@ using UnityEngine;
 public class Player_Spawn : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Player;
-
-    public Transform Player_Group;
+    GameObject Player;
 
     public List<Transform> Player_Unit_List = new List<Transform>();
 
-    public void Unit_Spawn()
+    public void Player_Unit_Spawn()
     {
-        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -6f), Player.transform.rotation, Player_Group);
+        GameObject Unit_Player = Instantiate(Player, transform.position + new Vector3(0, 0, -6f), Player.transform.rotation, GameManager.Instance.Player_Group);
         Player player = Unit_Player.GetComponent<Player>();
         player.Job_Index = Random.Range(0, 3);
 

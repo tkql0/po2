@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 3885185521688991111}
+  speed: 8
   move: {x: 0, y: 0, z: 0}
   player: {fileID: 8946132963479154532}
   isMove: 0
@@ -999,11 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df71edfd0f30c5c418586241719d58b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
   maxHealth: 10
-  curHealth: 0
   Job_Index: 0
-  isDamage: 0
   job_Weapons:
   - {fileID: 7688911192886687695}
   - {fileID: 9145333672983149025}

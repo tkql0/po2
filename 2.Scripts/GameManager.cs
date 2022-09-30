@@ -31,7 +31,7 @@ public class GameManager : MonoSingleTon<GameManager>
     {
         isDefense = true;
         stage++;
-        player_spawn.Unit_Spawn();
+        player_spawn.Player_Unit_Spawn();
         // 생성 되는 유닛들 저장
         stageTxt.text = stage + " Stage ";
         StartCoroutine(spawn_enemy());
