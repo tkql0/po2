@@ -44,6 +44,13 @@ public class Bow_Shoot : MonoBehaviour
             float MouseY = Input.GetAxis("Mouse Y");
             Aiming_target.transform.Translate(Vector3.forward * MouseY);
             // 마우스를 앞뒤로 움직인만큼 이동
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                for (int i = 0; i < Line.positionCount; i++)
+                {
+                    Line.SetPosition(i, Vector3.zero);
+                }
+            }
 
             if (player.inbow == true)
                 line_renderer();
