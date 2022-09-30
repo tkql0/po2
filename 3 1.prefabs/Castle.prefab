@@ -317,7 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abcc6d526d21c34daaf1373f10c654e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallrange: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  Wall_Range: 4
   Wall: {fileID: 4439383057984531601, guid: d8effdffad9371a4788bdbd373ea6ce6, type: 3}
 --- !u!114 &-1968231726478887969
 MonoBehaviour:

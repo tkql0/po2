@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float maxHealth;
+    [SerializeField]
+    float maxHealth;
     // 최대 체력
-    public float curHealth;
+    float curHealth;
     // 현재 체력
 
     public int Job_Index;
 
-    public bool isDamage;
+    bool isDamage;
 
     public GameObject[] job_Weapons;
     public bool[] hasWeapon;
@@ -207,14 +208,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    { // 아이템을 안먹고 지나갔다면
+        if (other.tag == "Weapon")
+        {
+            jobObject = null;
+        }
+    }
+
     IEnumerator OnDamage()
     {
         isDamage = true;
         if (curHealth <= 0 && !isDead)
         {
             Player_Die();
-            GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
-            GameManager.Instance.Camera_target.Player_Dead();
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }
@@ -222,17 +229,11 @@ public class Player : MonoBehaviour
         isDamage = false;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Weapon")
-        {
-            jobObject = null;
-        }
-    }
-
     void Player_Die()
     {
         isDead = true;
         anim.SetTrigger("doDie");
+        GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
+        GameManager.Instance.Camera_target.Player_Dead();
     }
 }

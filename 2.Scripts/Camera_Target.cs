@@ -6,7 +6,7 @@ using Cinemachine;
 public class Camera_Target : MonoBehaviour
 {
     CinemachineVirtualCamera Cincamera;
-    CinemachineVirtualCamera Main_Cincamera;
+    public CinemachineVirtualCamera Main_Cincamera;
 
     public Player_Spawn Spawn_List;
 

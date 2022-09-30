@@ -30,7 +30,7 @@ public class Bow_Shoot : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.point.PointHealth >= 0 && camera_target.MainCam.GetComponent<CinemachineVirtualCamera>().enabled != true)
+        if(GameManager.Instance.point.PointHealth >= 0 && camera_target.Main_Cincamera.enabled != true)
             Shoot();
     }
 
@@ -44,20 +44,24 @@ public class Bow_Shoot : MonoBehaviour
             Aiming_Point.SetActive(true);
             float MouseY = Input.GetAxis("Mouse Y");
             Aiming_target.transform.Translate(Vector3.forward * MouseY);
+            // 마우스를 앞뒤로 움직인만큼 이동
+
             if (player.inbow == true)
-            {
                 line_renderer();
-            }
         }
+
         else if(Input.GetMouseButtonUp(0))
         {
             Aiming_Point.SetActive(false);
+
             if (player.inbow == true)
                 Attack();
+
             for (int i = 0; i < Line.positionCount; i++)
             {
                 Line.SetPosition(i, Vector3.zero);
             }
+
             Aiming_target.localPosition = new Vector3(0, 1.3f, 3);
         }
     }
