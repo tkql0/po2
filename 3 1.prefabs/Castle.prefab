@@ -320,7 +320,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
-  Wall_Range: 4
+  Wall_Range: 5
   Wall: {fileID: 4439383057984531601, guid: d8effdffad9371a4788bdbd373ea6ce6, type: 3}
 --- !u!114 &-1968231726478887969
 MonoBehaviour:
