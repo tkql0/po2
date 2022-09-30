@@ -1008,6 +1008,9 @@ MonoBehaviour:
   inshild: 0
   inbow: 0
   isDead: 0
+  Spawn_Job_Obj:
+  - {fileID: 2953234474067009843, guid: f3e8feab3bcf3004cb79f20da02692b0, type: 3}
+  - {fileID: 1278532179837695310, guid: 77747476a8d05b749955300f38620f70, type: 3}
   equipWeapon: {fileID: 0}
   healthSlider: {fileID: 4420735626537591624}
 --- !u!195 &-4896272805441883520
@@ -2538,6 +2541,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2781618078270164049, guid: b32c5108fbc4b7e4b98150a1813bd43b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781618078270164049, guid: b32c5108fbc4b7e4b98150a1813bd43b, type: 3}
       propertyPath: m_Center.x
       value: 0.05
       objectReference: {fileID: 0}
@@ -2667,6 +2674,10 @@ PrefabInstance:
     - target: {fileID: 2781618078270164049, guid: b32c5108fbc4b7e4b98150a1813bd43b, type: 3}
       propertyPath: m_Size.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781618078270164049, guid: b32c5108fbc4b7e4b98150a1813bd43b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781618078270164049, guid: b32c5108fbc4b7e4b98150a1813bd43b, type: 3}
       propertyPath: m_Center.x

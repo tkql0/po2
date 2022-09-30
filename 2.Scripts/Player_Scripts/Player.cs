@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     GameObject jobObject;
 
+    public GameObject[] Spawn_Job_Obj;
+
     public GameObject equipWeapon;
 
     int equipWeaponIndex = -1;
@@ -236,10 +238,10 @@ public class Player : MonoBehaviour
         GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
         GameManager.Instance.Camera_target.Player_Dead();
 
-        if(hasWeapon[1] == true)
-            Instantiate(job_Weapons[1], transform.position, Quaternion.identity);
+        if (hasWeapon[1] == true)
+            Instantiate(Spawn_Job_Obj[0], transform.position + new Vector3(0, 4f, 0), Quaternion.identity);
 
         if (hasWeapon[2] == true)
-            Instantiate(job_Weapons[2], transform.position, Quaternion.identity);
+            Instantiate(Spawn_Job_Obj[1], transform.position + new Vector3(0, 4f, 0), Quaternion.identity);
     }
 }

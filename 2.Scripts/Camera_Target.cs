@@ -118,6 +118,21 @@ public class Camera_Target : MonoBehaviour
             Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Castle_Spawn>().enabled = true;
             Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Bow_Shoot>().enabled = true;
         }
+
+        else if (Player_Spawn_List.Player_Unit_List.Count == now_Index && now_Index != 0)
+        {
+            now_Index--;
+            Past_Index--;
+            Cincamera.Follow = Player_Spawn_List.Player_Unit_List[now_Index];
+            Cincamera.LookAt = Player_Spawn_List.Player_Unit_List[now_Index].GetChild(0);
+            // 순서가 바뀐 뒤 카메라 타겟 설정
+
+            Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().isMove = true;
+            Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().enabled = true;
+            Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Castle_Spawn>().enabled = true;
+            Player_Spawn_List.Player_Unit_List[now_Index].GetComponent<Bow_Shoot>().enabled = true;
+        }
+
         else
         {
             Cincamera.enabled = false;
