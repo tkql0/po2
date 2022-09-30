@@ -49,6 +49,6 @@ public class Slider_set : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         sTimer.value = reTime;
-        manager.StageEnd();
+        manager.StageStart();
     }
 }

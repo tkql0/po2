@@ -983,10 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48e49a3c319b714fb2352d1704ce91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 3885185521688991111}
   speed: 8
-  move: {x: 0, y: 0, z: 0}
-  player: {fileID: 8946132963479154532}
   isMove: 0
 --- !u!114 &8946132963479154532
 MonoBehaviour:
@@ -1134,7 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a4bd38ad8ce1d438952d77ec4279aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
+  Player_Seatch_ange: 4
   Danger: {fileID: 4311764011039618224}
   targetMask:
     serializedVersion: 2

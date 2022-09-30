@@ -35,23 +35,22 @@ public class Player : MonoBehaviour
 
     int equipWeaponIndex = -1;
 
-    Animator anim;
+    Animator Player_Anim;
 
     public Slider healthSlider;
     // 체력 UI
-
-    Bow_Shoot bow_shoot;
 
     Player_Move player_move;
 
     private void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        Player_Anim = GetComponentInChildren<Animator>();
         player_move = GetComponent<Player_Move>();
         curHealth = maxHealth;
         isDamage = false;
+
         switch (Job_Index)
-        {
+        { // 플레이어 생성시 랜덤으로 무기 지급
             case 0:
                 break;
             case 1:
@@ -61,7 +60,6 @@ public class Player : MonoBehaviour
                 hasWeapon[2] = true;
                 break;
         }
-        bow_shoot = GetComponent<Bow_Shoot>();
     }
 
     private void Update()
@@ -72,10 +70,9 @@ public class Player : MonoBehaviour
         sDown3 = Input.GetButtonDown("Swap3");
 
         Interation();
+
         if(player_move.enabled == true)
-        {
             Swap();
-        }
         OnEnable();
     }
 
@@ -89,17 +86,12 @@ public class Player : MonoBehaviour
     void Swap()
     {
         if (sDown1 && (!hasWeapon[1] || equipWeaponIndex == 0))
-        {
             return;
-        }
         if (sDown2 && (!hasWeapon[2] || equipWeaponIndex == 1))
-        {
             return;
-        }
         if (sDown3 && (equipWeaponIndex == -1))
-        {
             return;
-        }
+
         int weaponIndex = -1;
 
         if (sDown1 || sDown2 || sDown3)
@@ -118,14 +110,16 @@ public class Player : MonoBehaviour
                     equipWeapon.SetActive(false);
                     weaponIndex = 0;
                 }
+
                 if (sDown2)
                 {
                     weaponIndex = 1;
                 }
+
                 if (sDown3)
                 {
-                    anim.SetBool("isShild", false);
-                    anim.SetBool("isBow", false);
+                    Player_Anim.SetBool("isShild", false);
+                    Player_Anim.SetBool("isBow", false);
                     for (int i = 0; i <= 2; i++)
                     {
                         if (job_Weapons[i].activeSelf == true)
@@ -142,26 +136,29 @@ public class Player : MonoBehaviour
             equipWeapon = job_Weapons[weaponIndex];
 
             equipWeapon.SetActive(true);
+
             if (sDown1)
             {
-                anim.SetBool("isShild", false);
-                anim.SetBool("isBow", true);
+                Player_Anim.SetBool("isShild", false);
+                Player_Anim.SetBool("isBow", true);
                 inbow = true;
                 inshild = false;
             }
+
             if (sDown2)
             {
-                anim.SetBool("isBow", false);
-                anim.SetBool("isShild", true);
+                Player_Anim.SetBool("isBow", false);
+                Player_Anim.SetBool("isShild", true);
                 equipWeapon = job_Weapons[weaponIndex + 1];
                 equipWeapon.SetActive(true);
                 inbow = false;
                 inshild = true;
             }
+
             if (sDown3)
             {
-                anim.SetBool("isShild", false);
-                anim.SetBool("isBow", false);
+                Player_Anim.SetBool("isShild", false);
+                Player_Anim.SetBool("isBow", false);
                 equipWeapon = job_Weapons[weaponIndex];
                 equipWeapon.SetActive(true);
                 inbow = false;
@@ -173,6 +170,7 @@ public class Player : MonoBehaviour
     void Interation()
     {
         hasWeapon[0] = true;
+
         if (EDown && jobObject != null)
         {
             if(jobObject.tag == "Weapon")
@@ -191,40 +189,42 @@ public class Player : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Enemy enemy = other.GetComponent<Enemy>();
+
             if (!isDamage && !inshild && !enemy.isDead)
-            {
+            { // 방패가 없다면
                 curHealth -= enemy.damage;
                 StartCoroutine(OnDamage());
             }
+
             else if(!isDamage && inshild && !enemy.isDead)
-            {
+            { // 방패가 있다면
                 curHealth -= enemy.damage / 2;
                 StartCoroutine(OnDamage());
             }
         }
+
         if (other.tag == "Weapon")
-        {
+            // 아이템이 닿고 있다면
             jobObject = other.gameObject;
-        }
     }
 
     private void OnTriggerExit(Collider other)
-    { // 아이템을 안먹고 지나갔다면
+    { // 아이템을 지나갔다면
         if (other.tag == "Weapon")
-        {
             jobObject = null;
-        }
     }
 
     IEnumerator OnDamage()
     {
         isDamage = true;
+
         if (curHealth <= 0 && !isDead)
         {
             Player_Die();
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
         }
+
         yield return new WaitForSeconds(1f);
         isDamage = false;
     }
@@ -232,8 +232,14 @@ public class Player : MonoBehaviour
     void Player_Die()
     {
         isDead = true;
-        anim.SetTrigger("doDie");
+        Player_Anim.SetTrigger("doDie");
         GameManager.Instance.player_spawn.Player_Unit_List.Remove(transform);
         GameManager.Instance.Camera_target.Player_Dead();
+
+        if(hasWeapon[1] == true)
+            Instantiate(job_Weapons[1], transform.position, Quaternion.identity);
+
+        if (hasWeapon[2] == true)
+            Instantiate(job_Weapons[2], transform.position, Quaternion.identity);
     }
 }

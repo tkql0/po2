@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoSingleTon<GameManager>
 {
-    public int stage;
+    int stage;
     public Point point;
 
     public Text stageTxt;
@@ -18,8 +18,6 @@ public class GameManager : MonoSingleTon<GameManager>
     public Transform Player_Group;
     public Transform Castle_Group;
 
-    public bool isDefense = false;
-
     public Player_Spawn player_spawn;
     public Enemy_Spawn enemy_spawn;
 
@@ -29,10 +27,8 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public void StageStart()
     {
-        isDefense = true;
         stage++;
         player_spawn.Player_Unit_Spawn();
-        // 생성 되는 유닛들 저장
         stageTxt.text = stage + " Stage ";
         StartCoroutine(spawn_enemy());
     }
@@ -44,11 +40,5 @@ public class GameManager : MonoSingleTon<GameManager>
             enemy_spawn.Spawn_Enemy();
             yield return new WaitForSeconds(0.5f);
         }
-    }
-
-    public void StageEnd()
-    {
-        isDefense = false;
-        StageStart();
     }
 }
