@@ -9,7 +9,7 @@ public class Wall_Spawn : MonoBehaviour
     Transform spawn_target;
 
     [SerializeField]
-    float wallrange = 3f;
+    float wallrange = 4f;
 
     public GameObject Wall;
 

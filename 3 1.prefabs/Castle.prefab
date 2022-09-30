@@ -317,8 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abcc6d526d21c34daaf1373f10c654e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CastleTag: Castle
-  spawn_target: {fileID: 0}
   wallrange: 5
   Wall: {fileID: 4439383057984531601, guid: d8effdffad9371a4788bdbd373ea6ce6, type: 3}
 --- !u!114 &-1968231726478887969
@@ -333,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3997003241faeab4bb5b582068a5a657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Castle_Seatch_Range: 3
+  Castle_Seatch_Range: 4
   Castle_Attack_Cool_Time: 0.5
   Castle_damage: 2
   Danger: {fileID: 3645320633740096466}
@@ -353,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52eb0a75baf321c42bf6bebee2ccf9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
+  Castle_Limit_Range: 2
   Range: {fileID: 7302135048214980699}
   playerMask:
     serializedVersion: 2
@@ -361,8 +359,6 @@ MonoBehaviour:
   castleMask:
     serializedVersion: 2
     m_Bits: 4096
-  CastleList: []
-  PlayerList: []
 --- !u!1 &7024653724082406077
 GameObject:
   m_ObjectHideFlags: 0

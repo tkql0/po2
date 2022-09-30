@@ -106,7 +106,18 @@ public class Camera_Target : MonoBehaviour
 
     public void Player_Dead()
     {
-        if (Spawn_List.Player_Unit_List[now_Index] == null)
+        if (Spawn_List.Player_Unit_List.Count > now_Index)
+        {
+            Cincamera.Follow = Spawn_List.Player_Unit_List[now_Index];
+            Cincamera.LookAt = Spawn_List.Player_Unit_List[now_Index].GetChild(0);
+            // 순서가 바뀐 뒤 카메라 타겟 설정
+
+            Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().isMove = true;
+            Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().enabled = true;
+            Spawn_List.Player_Unit_List[now_Index].GetComponent<Castle_Spawn>().enabled = true;
+            Spawn_List.Player_Unit_List[now_Index].GetComponent<Bow_Shoot>().enabled = true;
+        }
+        else
         {
             Cincamera.enabled = false;
             // 타겟을 보는 시네머신은 끄고
@@ -117,18 +128,6 @@ public class Camera_Target : MonoBehaviour
             // 현재 순서를 처음으로 되돌리기
             Cincamera.Follow = null;
             Cincamera.LookAt = null;
-        }
-
-        if (Spawn_List.Player_Unit_List[now_Index] != null)
-        {
-            Cincamera.Follow = Spawn_List.Player_Unit_List[now_Index];
-            Cincamera.LookAt = Spawn_List.Player_Unit_List[now_Index].GetChild(0);
-            // 순서가 바뀐 뒤 카메라 타겟 설정
-
-            Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().isMove = true;
-            Spawn_List.Player_Unit_List[now_Index].GetComponent<Player_Move>().enabled = true;
-            Spawn_List.Player_Unit_List[now_Index].GetComponent<Castle_Spawn>().enabled = true;
-            Spawn_List.Player_Unit_List[now_Index].GetComponent<Bow_Shoot>().enabled = true;
         }
     }
 

@@ -48,7 +48,7 @@ public class Point : MonoBehaviour
                     // Player와 Point의 거리가 제한범위보다 가깝다면
                     players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = true;
 
-                else if (dstToTarget >= Point_Limit_Range)
+                else if (dstToTarget > Point_Limit_Range)
                     players[i].GetComponent<Castle_Spawn>().Point_Spawn_Limit = false;
             }
         }

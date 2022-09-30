@@ -58,7 +58,7 @@ public class Castle : MonoBehaviour
                     Range.SetActive(true);
                 }
 
-                else if(dstToTarget >= Castle_Limit_Range)
+                else if(dstToTarget > Castle_Limit_Range)
                 {
                     PlayerList[i].GetComponent<Castle_Spawn>().Castle_Spawn_Limit = false;
                     Range.SetActive(false);
