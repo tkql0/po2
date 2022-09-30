@@ -25,7 +25,7 @@ public class Castle_Spawn : MonoBehaviour
 
     void Castle_spown()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && !player.isDead)
+        if (Input.GetKeyDown(KeyCode.Space) && !player.isDead)
         {
             if (Point_Spawn_Limit == true || Castle_Spawn_Limit == true)
             {
@@ -34,7 +34,7 @@ public class Castle_Spawn : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftAlt) && !player.isDead)
+        if (Input.GetKeyUp(KeyCode.Space) && !player.isDead)
         {
             if (Point_Spawn_Limit == false && Castle_Spawn_Limit == false)
             {
