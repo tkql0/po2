@@ -112,7 +112,7 @@ public class Enemy_Targerting : MonoBehaviour
     void DownPoint()
     {
         GameManager.Instance.point.PointHealth -= 1;
-        GameManager.Instance.pointTxt.text = " Health : " + GameManager.Instance.point.PointHealth;
+        GameManager.Instance.pointTxt.text = " HP : " + GameManager.Instance.point.PointHealth;
         Destroy(gameObject);
         return;
     }
