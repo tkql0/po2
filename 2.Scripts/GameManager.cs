@@ -25,6 +25,14 @@ public class GameManager : MonoSingleTon<GameManager>
 
     public List<Transform> Castle_List = new List<Transform>();
 
+    public Slider Point_healthSlider;
+
+    private void Update()
+    {
+        Point_healthSlider.maxValue = 20;
+        Point_healthSlider.value = point.PointHealth;
+    }
+
     public void StageStart()
     {
         stage++;
